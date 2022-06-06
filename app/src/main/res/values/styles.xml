@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="tabActive" parent="tab">
+        <item name="android:textColor">@color/font</item>
+        <item name="android:background">@color/yellow_60</item>
+    </style>
+
+    <style name="tab">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/fontTrans</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+</resources>
