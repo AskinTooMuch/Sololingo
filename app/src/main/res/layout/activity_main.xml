@@ -12,6 +12,45 @@
         app:layout_constraintTop_toBottomOf="@+id/ctlMainTabs"
         tools:layout_editor_absoluteX="4dp">
 
+        <EditText
+            android:id="@+id/edtTranslateData"
+            android:layout_width="329dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="15dp"
+            android:ems="10"
+            android:hint="@string/en_textTranslate"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/tvTranslateResult"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTranslateResult"
+            android:layout_width="385dp"
+            android:layout_height="525dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtTranslateData" />
+
+        <ImageButton
+            android:id="@+id/ibtnTranslate"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvTranslateResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edtTranslateData"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_action_translate"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
