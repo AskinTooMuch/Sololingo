@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/helo"
+                android:includeFontPadding="false"
+                android:text="Register"
+                android:textColor="#FDFDFD"
+                android:textSize="60sp"
+                tools:layout_editor_absoluteX="136dp"
+                tools:layout_editor_absoluteY="43dp" />
+
+            <EditText
+                android:id="@+id/edEmail"
+                style="@style/insUsername"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                android:backgroundTint="#75FFFFFF"
+                android:hint="Email"
+                tools:layout_editor_absoluteX="49dp" />
+
+
+            <EditText
+                android:id="@+id/edName"
+                style="@style/insUsername"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:hint="Name"
+                tools:layout_editor_absoluteX="49dp" />
+
+            <EditText
+                android:id="@+id/edDOB"
+                style="@style/insUsername"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:hint="Date of birth"
+                tools:layout_editor_absoluteX="49dp" />
+
+            <EditText
+                android:id="@+id/edPassword"
+                style="@style/insUsername"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:hint="Password"
+                app:layout_constraintTop_toBottomOf="@+id/edEmail"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                tools:layout_editor_absoluteX="49dp" />
+
+            <EditText
+                android:id="@+id/edRePassword"
+                style="@style/insUsername"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:hint="Re-Enter password"
+                app:layout_constraintTop_toBottomOf="@+id/edEmail"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                tools:layout_editor_absoluteX="49dp" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="197dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="#5167EC"
+                android:text="Register"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edPassword"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/btnRedirectLogin"
+                android:layout_width="197dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#5167EC"
+                android:text="Login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
