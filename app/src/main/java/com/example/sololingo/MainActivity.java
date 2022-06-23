@@ -16,10 +16,14 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.mlkit.common.model.DownloadConditions;
+import com.google.mlkit.common.model.RemoteModelManager;
 import com.google.mlkit.nl.translate.TranslateLanguage;
+import com.google.mlkit.nl.translate.TranslateRemoteModel;
 import com.google.mlkit.nl.translate.Translation;
 import com.google.mlkit.nl.translate.Translator;
 import com.google.mlkit.nl.translate.TranslatorOptions;
+
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private static String to = "JA";
     public Translator en_jaTranslator;
     private boolean translatorFlag = false;
+    private boolean downloadedModel = false;
 
     protected void bindingView() {
         edtTranslateData = findViewById(R.id.edtTranslateData);
@@ -51,47 +56,55 @@ public class MainActivity extends AppCompatActivity {
     private void translate(View view) {
         if (!edtTranslateData.getText().toString().isEmpty()) {
             tvTranslateResult.setText("SYSTEM: Please wait while we making calls to the Oracles");
+
             String source = edtTranslateData.getText().toString();
+            translatorFlag = true;
             DownloadConditions conditions = new DownloadConditions.Builder()
                     .requireWifi()
                     .build();
             en_jaTranslator.downloadModelIfNeeded(conditions)
-                .addOnSuccessListener(
-                    new OnSuccessListener() {
-                        @Override
-                        public void onSuccess(Object o) {
-                            //Set flag
-                            translatorFlag = true;
-                        }
-                        })
-                .addOnFailureListener(
-                    new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // Couldn't load
-                            tvTranslateResult.setText("SYSTEM: Model could not be downloaded because internet connection or other internal error.");
-                        }
-                    });
+                    .addOnSuccessListener(
+                            new OnSuccessListener() {
+                                @Override
+                                public void onSuccess(Object o) {
+                                    //Set flag
+                                }
+                            })
+                    .addOnFailureListener(
+                            new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    // Couldn't load
+                                    tvTranslateResult.setText("SYSTEM: Model could not be downloaded because internet connection or other internal error.");
+                                    translatorFlag = false;
+                                }
+                            });
             if (translatorFlag) {
                 en_jaTranslator.translate(source)
-                    .addOnSuccessListener(
-                        new OnSuccessListener() {
-                            @Override
-                            public void onSuccess(Object o) {
-                                //Success
-                                tvTranslateResult.setText(o.toString());
-                            }
-                        })
-                    .addOnFailureListener(
-                        new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                // Error.
-                                tvTranslateResult.setText("SYSTEM: Something went wrong.");
-                            }
-                        });
+                        .addOnSuccessListener(
+                                new OnSuccessListener() {
+                                    @Override
+                                    public void onSuccess(Object o) {
+                                        //Success
+                                        tvTranslateResult.setText(o.toString());
+                                    }
+                                })
+                        .addOnFailureListener(
+                                new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Error.
+                                        tvTranslateResult.setText("SYSTEM: Something went wrong.");
+                                    }
+                                });
             }
         }
+    }
+
+    private boolean checkIfModelAvailable(String from, String to) {
+        RemoteModelManager modelManager = RemoteModelManager.getInstance();
+        TranslateRemoteModel jaModel = new TranslateRemoteModel.Builder(TranslateLanguage.JAPANESE).build();
+        return downloadedModel;
     }
 
     @Override
