@@ -67,6 +67,7 @@
             <EditText
                 android:id="@+id/edPassword"
                 style="@style/insUsername"
+                android:inputType="textPassword"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
                 android:hint="Password"
@@ -77,6 +78,7 @@
             <EditText
                 android:id="@+id/edRePassword"
                 style="@style/insUsername"
+                android:inputType="textPassword"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
                 android:hint="Re-Enter password"
