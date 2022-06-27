@@ -2,6 +2,9 @@ package com.example.sololingo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.media.Image;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabLayout;
 import com.google.mlkit.common.model.DownloadConditions;
 import com.google.mlkit.common.model.RemoteModelManager;
 import com.google.mlkit.nl.translate.TranslateLanguage;
@@ -24,6 +28,8 @@ import com.google.mlkit.nl.translate.Translator;
 import com.google.mlkit.nl.translate.TranslatorOptions;
 
 import java.util.Set;
+
+import Adapter.TabAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,11 +42,13 @@ public class MainActivity extends AppCompatActivity {
     public Translator en_jaTranslator;
     private boolean translatorFlag = false;
     private boolean downloadedModel = false;
+    private ViewPager pager;
+    private TabLayout tabLayout;
 
     protected void bindingView() {
-        edtTranslateData = findViewById(R.id.edtTranslateData);
+        /*edtTranslateData = findViewById(R.id.edtTranslateData);
         ibtnTranslate = findViewById(R.id.ibtnTranslate);
-        tvTranslateResult = findViewById(R.id.tvTranslateResult);
+        tvTranslateResult = findViewById(R.id.tvTranslateResult);*/
         TranslatorOptions options =
                 new TranslatorOptions.Builder()
                         .setSourceLanguage(TranslateLanguage.ENGLISH)
@@ -107,12 +115,24 @@ public class MainActivity extends AppCompatActivity {
         return downloadedModel;
     }
 
+    private void setTabLayout() {
+        pager = findViewById(R.id.view_pager);
+        tabLayout = findViewById(R.id.tab_layout);
+        FragmentManager manager = getSupportFragmentManager();
+        TabAdapter adapter = new TabAdapter(manager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,this);
+        pager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(pager);
+        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setTabsFromPagerAdapter(adapter);//deprecated
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bindingView();
-        bindingAction();
+        //bindingView();
+        //bindingAction();
+        setTabLayout();
     }
 
 

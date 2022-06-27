@@ -42,5 +42,4 @@ dependencies {
 
     //Translator
     implementation 'com.google.firebase:firebase-core:21.0.0'
-
 }
