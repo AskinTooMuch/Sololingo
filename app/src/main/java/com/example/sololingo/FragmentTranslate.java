@@ -6,9 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -33,8 +36,8 @@ import com.google.mlkit.nl.translate.TranslatorOptions;
 public class FragmentTranslate extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
-    private static String from = "EN";
-    private static String to = "JA";
+    private String from = "EN";
+    private String to = "JA";
     public Translator languageTranslator;
     private boolean translatorFlag = false;
     private boolean downloadedModel = false;
@@ -43,6 +46,12 @@ public class FragmentTranslate extends Fragment {
     private TextView tvTranslateResult;
     private Button btnTranslate;
     private Spinner spinLanguageFrom, spinLanguageTo;
+    private String[] languages = {"Tiếng Việt","English","日本語","한국인"};
+    private String[] codes = {
+            TranslateLanguage.VIETNAMESE,
+            TranslateLanguage.ENGLISH,
+            TranslateLanguage.JAPANESE,
+            TranslateLanguage.KOREAN};
 
     private void bindingView(View v){
         edtSourceText = v.findViewById(R.id.edtSourceText);
@@ -50,12 +59,51 @@ public class FragmentTranslate extends Fragment {
         ibtnSwitch = v.findViewById(R.id.ibtnSwitch);
         tvTranslateResult = v.findViewById(R.id.tvTranslateResult);
         btnTranslate = v.findViewById(R.id.btnTranslate);
+        //Spinner
         spinLanguageFrom = v.findViewById(R.id.spinLanguageFrom);
         spinLanguageTo = v.findViewById(R.id.spinLanguageTo);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter adapter = new  ArrayAdapter(v.getContext(),
+                 android.R.layout.simple_spinner_item, languages);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinLanguageFrom.setAdapter(adapter);
+        spinLanguageTo.setAdapter(adapter);
     }
 
     private void bindingAction(View v){
         btnTranslate.setOnClickListener(this::translate);
+        ibtnSwitch.setOnClickListener(this::switchLanguages);
+        spinLanguageFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                from = codes[position];
+                Log.d("TAG", "onItemSelected: from = "+from);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinLanguageTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                to = codes[position];
+                Log.d("TAG", "onItemSelected: to = "+to);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    private void switchLanguages(View view) {
+        
     }
 
     private void translate(View view) {
@@ -158,4 +206,5 @@ public class FragmentTranslate extends Fragment {
         bindingView(view);
         bindingAction(view);
     }
+
 }
