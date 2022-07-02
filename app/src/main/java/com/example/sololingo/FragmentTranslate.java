@@ -1,11 +1,13 @@
 package com.example.sololingo;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,6 +31,9 @@ import com.google.mlkit.nl.translate.Translation;
 import com.google.mlkit.nl.translate.Translator;
 import com.google.mlkit.nl.translate.TranslatorOptions;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FragmentTranslate#newInstance} factory method to
@@ -35,9 +41,10 @@ import com.google.mlkit.nl.translate.TranslatorOptions;
  */
 public class FragmentTranslate extends Fragment {
 
+    private static final int REQUEST_PERMISSION_CODE = 1;
     // TODO: Rename parameter arguments, choose names that match
-    private String from = "EN";
-    private String to = "JA";
+    private int from = 1;
+    private int to = 2;
     public Translator languageTranslator;
     private boolean translatorFlag = false;
     private boolean downloadedModel = false;
@@ -73,12 +80,15 @@ public class FragmentTranslate extends Fragment {
     }
 
     private void bindingAction(View v){
+        //Translate
         btnTranslate.setOnClickListener(this::translate);
+        //Switch
         ibtnSwitch.setOnClickListener(this::switchLanguages);
+        //Get from language
         spinLanguageFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                from = codes[position];
+                from = position;
                 Log.d("TAG", "onItemSelected: from = "+from);
             }
 
@@ -87,11 +97,11 @@ public class FragmentTranslate extends Fragment {
 
             }
         });
-
+        //Get to language
         spinLanguageTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                to = codes[position];
+                to = position;
                 Log.d("TAG", "onItemSelected: to = "+to);
             }
 
@@ -100,17 +110,53 @@ public class FragmentTranslate extends Fragment {
 
             }
         });
+        //Use mic
+        ibtnMic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent micIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                micIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                micIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+                micIntent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Let us hear your beautiful voice");
+                try {
+                    startActivityForResult(micIntent, REQUEST_PERMISSION_CODE);
+                } catch (Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_PERMISSION_CODE) {
+            if (resultCode == -1 && data!=null){
+                ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                edtSourceText.setText(result.get(0));
+            }
+        }
     }
 
     private void switchLanguages(View view) {
-        
+        //Switch selection
+        int temp = from;
+        from = to;
+        to = temp;
+        spinLanguageFrom.setSelection(from);
+        spinLanguageTo.setSelection(to);
+        //Switch translate text
+        CharSequence textTemp = edtSourceText.getText();
+        edtSourceText.setText(tvTranslateResult.getText());
+        tvTranslateResult.setText(textTemp);
     }
 
     private void translate(View view) {
         TranslatorOptions options =
                 new TranslatorOptions.Builder()
-                        .setSourceLanguage(TranslateLanguage.ENGLISH)
-                        .setTargetLanguage(TranslateLanguage.JAPANESE)
+                        .setSourceLanguage(codes[from])
+                        .setTargetLanguage(codes[to])
                         .build();
         languageTranslator = Translation.getClient(options);
         if (!edtSourceText.getText().toString().isEmpty()) {
@@ -135,7 +181,8 @@ public class FragmentTranslate extends Fragment {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     // Couldn't load
-                                    tvTranslateResult.setText("SYSTEM: Model could not be downloaded because internet connection or other internal error.");
+                                    tvTranslateResult.setText(
+                                            "SYSTEM: Model could not be downloaded because internet connection or other internal error.");
                                     translatorFlag = false;
                                 }
                             });
@@ -154,7 +201,8 @@ public class FragmentTranslate extends Fragment {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         // Error.
-                                        tvTranslateResult.setText("SYSTEM: Something went wrong.");
+                                        tvTranslateResult.setText(
+                                                "SYSTEM: Something went wrong. Try again when the model finish downloading");
                                     }
                                 });
             }
@@ -205,6 +253,8 @@ public class FragmentTranslate extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bindingView(view);
         bindingAction(view);
+        spinLanguageFrom.setSelection(1);
+        spinLanguageTo.setSelection(2);
     }
 
 }
