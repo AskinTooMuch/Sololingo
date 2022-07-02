@@ -33,15 +33,7 @@ import Adapter.TabAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText edtTranslateData;
-    private ImageButton ibtnTranslate;
-    private TextView tvTranslateResult;
     private static final int REQUEST_PERMISSION_CODE = 1;
-    private static String from = "EN";
-    private static String to = "JA";
-    public Translator en_jaTranslator;
-    private boolean translatorFlag = false;
-    private boolean downloadedModel = false;
     private ViewPager pager;
     private TabLayout tabLayout;
 
@@ -49,71 +41,13 @@ public class MainActivity extends AppCompatActivity {
         /*edtTranslateData = findViewById(R.id.edtTranslateData);
         ibtnTranslate = findViewById(R.id.ibtnTranslate);
         tvTranslateResult = findViewById(R.id.tvTranslateResult);*/
-        TranslatorOptions options =
-                new TranslatorOptions.Builder()
-                        .setSourceLanguage(TranslateLanguage.ENGLISH)
-                        .setTargetLanguage(TranslateLanguage.JAPANESE)
-                        .build();
-        en_jaTranslator = Translation.getClient(options);
     }
 
     protected void bindingAction() {
-        ibtnTranslate.setOnClickListener(this::translate);
+
     }
 
-    private void translate(View view) {
-        if (!edtTranslateData.getText().toString().isEmpty()) {
-            tvTranslateResult.setText("SYSTEM: Please wait while we making calls to the Oracles");
 
-            String source = edtTranslateData.getText().toString();
-            translatorFlag = true;
-            DownloadConditions conditions = new DownloadConditions.Builder()
-                    .requireWifi()
-                    .build();
-            en_jaTranslator.downloadModelIfNeeded(conditions)
-                    .addOnSuccessListener(
-                            new OnSuccessListener() {
-                                @Override
-                                public void onSuccess(Object o) {
-                                    //Set flag
-                                }
-                            })
-                    .addOnFailureListener(
-                            new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    // Couldn't load
-                                    tvTranslateResult.setText("SYSTEM: Model could not be downloaded because internet connection or other internal error.");
-                                    translatorFlag = false;
-                                }
-                            });
-            if (translatorFlag) {
-                en_jaTranslator.translate(source)
-                        .addOnSuccessListener(
-                                new OnSuccessListener() {
-                                    @Override
-                                    public void onSuccess(Object o) {
-                                        //Success
-                                        tvTranslateResult.setText(o.toString());
-                                    }
-                                })
-                        .addOnFailureListener(
-                                new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        // Error.
-                                        tvTranslateResult.setText("SYSTEM: Something went wrong.");
-                                    }
-                                });
-            }
-        }
-    }
-
-    private boolean checkIfModelAvailable(String from, String to) {
-        RemoteModelManager modelManager = RemoteModelManager.getInstance();
-        TranslateRemoteModel jaModel = new TranslateRemoteModel.Builder(TranslateLanguage.JAPANESE).build();
-        return downloadedModel;
-    }
 
     private void setTabLayout() {
         pager = findViewById(R.id.view_pager);
