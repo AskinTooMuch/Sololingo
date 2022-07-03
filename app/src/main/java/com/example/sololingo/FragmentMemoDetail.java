@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,29 +18,20 @@ import com.google.firebase.database.FirebaseDatabase;
  * Use the {@link FragmentMemo#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentMemo extends Fragment {
+public class FragmentMemoDetail extends Fragment {
     private FirebaseDatabase database;
-    private ImageButton ibtnNewMemo;
 
     private void bindingView(View view){
-       database = FirebaseDatabase.getInstance();
-       ibtnNewMemo = view.findViewById(R.id.ibtnNewMemo);
+        database = FirebaseDatabase.getInstance();
     }
 
     private void bindingAction(View view){
-        ibtnNewMemo.setOnClickListener(this::onNewMemoClick);
-
     }
 
     private void onNewMemoClick(View view) {
-        FragmentTransaction fragmentTransaction = getActivity()
-                .getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.view_pager, new FragmentMemoDetail());
-        fragmentTransaction.commit();
     }
 
-    public FragmentMemo() {
+    public FragmentMemoDetail() {
         // Required empty public constructor
     }
 
@@ -70,7 +60,7 @@ public class FragmentMemo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_memo, container, false);
+        return inflater.inflate(R.layout.fragment_memo_detail, container, false);
     }
 
     @Override

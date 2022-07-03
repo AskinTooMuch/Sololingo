@@ -13,6 +13,8 @@
     <string name="en_textToTranslate">Text to translate</string>
     <string name="en_switchLanguage">Switch Language</string>
     <string name="en_mic">Microphone</string>
+    <string name="en_title">Title</string>
+    <string name="en_noteContent">Memo content</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
