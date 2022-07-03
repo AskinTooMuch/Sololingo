@@ -4,11 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_helpDark.xml" value="0.117" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/bottom_line.xml" value="0.2545" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_launcher_sololingo_background.xml" value="0.1735" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/layout/activity_memo_detail.xml" value="0.264" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment__flashcards.xml" value="0.18697916666666667" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment__translate.xml" value="0.2967818831942789" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment_memo.xml" value="0.264" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment_memo_detail.xml" value="0.1625" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/memo_create.xml" value="0.2" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/memo_detail.xml" value="0.2033514492753623" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/menu/mainmenu.xml" value="0.24895833333333334" />

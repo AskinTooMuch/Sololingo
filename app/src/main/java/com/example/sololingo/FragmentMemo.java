@@ -1,5 +1,6 @@
 package com.example.sololingo;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,12 +34,19 @@ public class FragmentMemo extends Fragment {
 
     }
 
+    /**
+     * Create a new blank memo
+     * @param view
+     */
     private void onNewMemoClick(View view) {
-        FragmentTransaction fragmentTransaction = getActivity()
-                .getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.view_pager, new FragmentMemoDetail());
-        fragmentTransaction.commit();
+        //Todo: Add activity memo detail
+        Intent i = new Intent(view.getContext(), ActivityMemoDetail.class);
+        i.putExtra("action","blankMemo");
+        startActivity(i);
+    }
+
+    private void onEditMemoClick(View view) {
+        //Todo: Add callback to memo detail
     }
 
     public FragmentMemo() {
