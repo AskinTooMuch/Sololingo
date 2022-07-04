@@ -59,7 +59,7 @@ public class Home extends Application {
     }
 
     private void redirectHome(){
-        Intent intent = new Intent(this,UserProfile.class);
+        Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

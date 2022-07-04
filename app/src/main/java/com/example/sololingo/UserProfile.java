@@ -219,21 +219,6 @@ public class UserProfile extends AppCompatActivity {
                     }
                 }
             });
-
-
-            /*
-            currentUser.updatePassword(password)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(), "Your password have been changed", Toast.LENGTH_SHORT).show();
-                                onBtnLogoutClick(getCurrentFocus());
-                            } else {
-                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });*/
         }
     }
 
