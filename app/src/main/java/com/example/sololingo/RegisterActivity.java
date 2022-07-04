@@ -29,14 +29,14 @@ import Bean.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText edEmail,edPassword,edName,edDOB,edRePassword;
-    Button btnRegister,btnLogin;
-    FirebaseAuth firebaseAuth;
-    String email;
-    String name;
-    String DOB;
-    String password;
-    String rePassword;
+    private EditText edEmail,edPassword,edName,edDOB,edRePassword;
+    private Button btnRegister,btnLogin;
+    private FirebaseAuth firebaseAuth;
+    private String email;
+    private String name;
+    private String DOB;
+    private String password;
+    private String rePassword;
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);

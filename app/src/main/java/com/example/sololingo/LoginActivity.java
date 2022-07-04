@@ -19,10 +19,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText edEmail,edPassword;
-    Button btnLogin,btnRedirectRegister;
-    CheckBox cbRememberMe;
-    FirebaseAuth firebaseAuth;
+    private EditText edEmail,edPassword;
+    private Button btnLogin,btnRedirectRegister;
+    private CheckBox cbRememberMe;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,17 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnRedirectRegister = findViewById(R.id.btnRedirectRegister);
         cbRememberMe = findViewById(R.id.cbRememberMe);
+        readUserLoginInfor();
+    }
+
+    private void readUserLoginInfor() {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("LoginInformation",this.MODE_PRIVATE);
+        String email = pref.getString("email",null);
+        String password = pref.getString("password",null);
+        if(email != null && password != null){
+            edEmail.setText(email);
+            edPassword.setText(password);
+        }
     }
 
     private void bindingAction() {
