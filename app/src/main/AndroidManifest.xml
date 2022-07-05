@@ -17,10 +17,19 @@
         android:theme="@style/Theme.Sololingo"
         tools:targetApi="31">
         <activity
+            android:name=".AddWordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddSubjectActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserProfile"
             android:exported="false" />
         <activity
             android:name=".ActivityMemoDetail"
+            android:exported="false" />
+        <activity
+            android:name=".ViewWordsActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
