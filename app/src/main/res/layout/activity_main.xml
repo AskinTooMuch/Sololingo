@@ -5,7 +5,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="?android:attr/colorBackground"
     tools:context=".MainActivity"
     tools:openDrawer="start">
 
@@ -18,13 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                 android:layout_height="?attr/actionBarSize"
                 android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
                 android:background="@color/purple_500"
-                app:popupTheme="@style/Theme.AppCompat.Light"
-                 ></androidx.appcompat.widget.Toolbar>
+                app:popupTheme="@style/Theme.AppCompat.Light"></androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,12 +35,12 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@android:color/transparent"
+                android:background="?attr/colorPrimaryVariant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tabTextColor="@color/black"
+                app:tabTextColor="?attr/colorOnPrimary"
                 tools:ignore="SpeakableTextPresentCheck">
 
             </com.google.android.material.tabs.TabLayout>
@@ -60,12 +60,13 @@
                 tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
-        android:layout_height="match_parent"
         android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/layout_header_nav"
-        app:menu="@menu/drawer_menu"/>
+        app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

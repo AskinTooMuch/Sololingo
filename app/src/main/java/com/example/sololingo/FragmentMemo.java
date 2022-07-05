@@ -71,7 +71,7 @@ public class FragmentMemo extends Fragment implements MemoRecycleAdapter.OnMemoC
 
     @Override
     public void onMemoClick(String id) {
-        Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(getContext(), ActivityMemoDetail.class);
         i.putExtra("action", "memoDetail");
         i.putExtra("id", id);

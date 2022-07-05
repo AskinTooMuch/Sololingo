@@ -71,7 +71,7 @@ public class FragmentTranslate extends Fragment {
         spinLanguageTo = v.findViewById(R.id.spinLanguageTo);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter adapter = new  ArrayAdapter(v.getContext(),
-                 android.R.layout.simple_spinner_item, languages);
+                 R.layout.spinner_item, languages);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -149,6 +149,7 @@ public class FragmentTranslate extends Fragment {
         //Switch translate text
         CharSequence textTemp = edtSourceText.getText();
         edtSourceText.setText(tvTranslateResult.getText());
+        tvTranslateResult.setTextColor(getResources().getColor(R.color.black));
         tvTranslateResult.setText(textTemp);
     }
 
@@ -160,8 +161,8 @@ public class FragmentTranslate extends Fragment {
                         .build();
         languageTranslator = Translation.getClient(options);
         if (!edtSourceText.getText().toString().isEmpty()) {
-            tvTranslateResult.setText("SYSTEM: Please wait while we making calls to the Oracles");
-
+            tvTranslateResult.setTextColor(getResources().getColor(R.color.red));
+            tvTranslateResult.setText("Please wait while we making calls to the Oracles");
             String source = edtSourceText.getText().toString();
             translatorFlag = true;
             DownloadConditions conditions = new DownloadConditions.Builder()
@@ -181,8 +182,9 @@ public class FragmentTranslate extends Fragment {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     // Couldn't load
+                                    tvTranslateResult.setTextColor(getResources().getColor(R.color.red));
                                     tvTranslateResult.setText(
-                                            "SYSTEM: Model could not be downloaded because internet connection or other internal error.");
+                                            "Model could not be downloaded because internet connection or other internal error.");
                                     translatorFlag = false;
                                 }
                             });
@@ -193,6 +195,7 @@ public class FragmentTranslate extends Fragment {
                                     @Override
                                     public void onSuccess(Object o) {
                                         //Success
+                                        tvTranslateResult.setTextColor(getResources().getColor(R.color.black));
                                         tvTranslateResult.setText(o.toString());
                                     }
                                 })
@@ -201,8 +204,9 @@ public class FragmentTranslate extends Fragment {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         // Error.
+                                        tvTranslateResult.setTextColor(getResources().getColor(R.color.red));
                                         tvTranslateResult.setText(
-                                                "SYSTEM: Something went wrong. Try again when the model finish downloading");
+                                                "Something went wrong. Try again when the model finish downloading");
                                     }
                                 });
             }

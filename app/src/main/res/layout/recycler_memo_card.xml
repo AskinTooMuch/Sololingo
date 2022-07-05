@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="?attr/colorBackgroundFloating"
     android:padding="5dp">
 
     <TextView
@@ -13,7 +15,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="4dp"
         android:text="@string/en_title"
-        android:textColor="@color/black_90"
+        android:textColor="?attr/colorOnBackground"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
@@ -26,7 +28,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="4dp"
         android:text="@string/en_date"
-        android:textColor="@color/black_90"
+        android:textColor="?attr/colorOnBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMemoCardTitle" />
 
