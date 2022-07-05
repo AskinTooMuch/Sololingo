@@ -29,6 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import Adapter.MemoRecycleAdapter;
 import Bean.Memo;
+import DAO.MemoDAO;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,11 +38,9 @@ import Bean.Memo;
  */
 public class FragmentMemo extends Fragment implements MemoRecycleAdapter.OnMemoClickListener {
     private ImageButton ibtnNewMemo;
-    private FirebaseFirestore db;
-    private SharedPreferences sharedPref;
-    private FirebaseAuth firebaseAuth;
     private MemoRecycleAdapter memoRecycleAdapter;
     private RecyclerView rcvMemoList;
+    private MemoDAO memoDAO;
 
     private void bindingView(View view) {
         rcvMemoList = view.findViewById(R.id.rcvMemoList);
@@ -53,19 +52,10 @@ public class FragmentMemo extends Fragment implements MemoRecycleAdapter.OnMemoC
     }
 
     private void loadData() {
-        sharedPref = getContext().getSharedPreferences("LoginInformation", getContext().MODE_PRIVATE);
-        firebaseAuth = FirebaseAuth.getInstance();
-        String userMail = sharedPref.getString("email", "");
         rcvMemoList.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        Query query = FirebaseFirestore
-                .getInstance()
-                .collection("memo")
-                .whereEqualTo("userEmail", userMail)
-                ;
-        FirestoreRecyclerOptions<Memo> options = new FirestoreRecyclerOptions.Builder<Memo>()
-                .setQuery(query, Memo.class)
-                .build();
-        memoRecycleAdapter = new MemoRecycleAdapter(options, this);
+        memoRecycleAdapter = new MemoRecycleAdapter(
+                memoDAO.getMemoSyncOptions(this.getContext()),
+                this);
         rcvMemoList.setAdapter(memoRecycleAdapter);
     }
 
@@ -147,6 +137,6 @@ public class FragmentMemo extends Fragment implements MemoRecycleAdapter.OnMemoC
         super.onViewCreated(view, savedInstanceState);
         bindingView(view);
         bindingAction(view);
-        db = FirebaseFirestore.getInstance();
+        memoDAO = new MemoDAO();
     }
 }
