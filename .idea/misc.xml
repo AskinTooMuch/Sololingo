@@ -18,18 +18,25 @@
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_translate.xml" value="0.147" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/border_no_fill.xml" value="0.2555" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/bottom_line.xml" value="0.2545" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_baseline_language.xml" value="0.2555" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_baseline_theme.xml" value="0.2555" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_launcher_sololingo_background.xml" value="0.1735" />
-        <entry key="..\:/Android/Sololingo/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_theme.xml" value="0.2555" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_user_profile.xml" value="0.2555" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/layout/activity_main.xml" value="0.24561403508771928" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/activity_memo_detail.xml" value="0.264" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment__flashcards.xml" value="0.18697916666666667" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment__translate.xml" value="0.2967818831942789" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment_memo.xml" value="0.264" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment_memo_detail.xml" value="0.1625" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment_translate.xml" value="0.25" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/layout/layout_header_nav.xml" value="0.25" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/layout/layout_switch.xml" value="0.24895833333333334" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/memo_create.xml" value="0.2" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/memo_detail.xml" value="0.2033514492753623" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/recycler_memo_card.xml" value="0.4" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/spinner_item.xml" value="0.1983695652173913" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/menu/drawer_menu.xml" value="0.25" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/menu/mainmenu.xml" value="0.24895833333333334" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_main.xml" value="0.24818840579710144" />

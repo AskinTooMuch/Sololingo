@@ -3,6 +3,8 @@ package com.example.sololingo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -11,6 +13,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
@@ -46,17 +49,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
+    int nightModeFlags;
 
+    /**
+     * Binding Views
+     */
     protected void bindingView() {
-        /*edtTranslateData = findViewById(R.id.edtTranslateData);
-        ibtnTranslate = findViewById(R.id.ibtnTranslate);
-        tvTranslateResult = findViewById(R.id.tvTranslateResult);*/
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         navigationView = findViewById(R.id.navigationView);
     }
 
+    /**
+     * Binding Actions for views
+     */
     protected void bindingAction() {
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,
                 drawerLayout,
@@ -69,6 +76,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    /**
+     * Set main tab layout
+     */
     private void setTabLayout() {
         pager = findViewById(R.id.view_pager);
         tabLayout = findViewById(R.id.tab_layout);
@@ -81,6 +91,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
     }
 
+    /**
+     * Overriding OnCreate method
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,9 +102,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bindingView();
         bindingAction();
         setTabLayout();
+        nightModeFlags =
+        this.getResources().getConfiguration().uiMode &
+                Configuration.UI_MODE_NIGHT_MASK;
     }
 
-
+    /**
+     * On select drawer navigation Items
+     * @param item
+     * @return
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -99,6 +120,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(this, UserProfile.class);
                 startActivity(intent);
+                break;
+            case R.id.theme:
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_NO:
+                        // Night mode is not active, we're using the light theme
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        break;
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        // Night mode is active, we're using dark theme
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        break;
+                }
+                break;
+            case R.id.language:
+
                 break;
         }
         return true;
