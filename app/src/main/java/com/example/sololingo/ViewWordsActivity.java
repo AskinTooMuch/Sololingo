@@ -151,10 +151,10 @@ public class ViewWordsActivity extends AppCompatActivity {
     private void inflateWordsList() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewWordsActivity.this);
         rcvItems.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(ViewWordsActivity.this, DividerItemDecoration.HORIZONTAL);
-        rcvItems.addItemDecoration(dividerItemDecoration);
+
         mWordListAdapter = new WordListAdapter(ViewWordsActivity.this, wordList);
         rcvItems.setAdapter(mWordListAdapter);
+        wordList.clear();
     }
 
     @Override
@@ -163,7 +163,7 @@ public class ViewWordsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_words);
         bindingView();
         bindingAction();
-        getWordsList();
+        //getWordsList();
         inflateWordsList();
     }
 

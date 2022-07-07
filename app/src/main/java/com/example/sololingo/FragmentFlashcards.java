@@ -1,6 +1,8 @@
 package com.example.sololingo;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -72,7 +74,7 @@ public class FragmentFlashcards extends Fragment {
     }
 
     private void getSubjectList() {
-        subjectList.clear();
+
         String uId = "vvduong108@gmail.com";
         myRef = database.getReference("subject");
         myRef.addValueEventListener(new ValueEventListener() {
@@ -111,7 +113,7 @@ public class FragmentFlashcards extends Fragment {
         View mView = inflater.inflate(R.layout.fragment_flashcards, container, false);
         bindingView(mView);
         bindingAction(mView);
-        getSubjectList();
+        //getSubjectList();
         inflateSubjectList();
         return mView;
     }

@@ -24,6 +24,15 @@
             android:name=".AddSubjectActivity"
             android:exported="false" />
         <activity
+            android:name=".EditWordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditSubjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LearnWordActivity"
+            android:exported="false" />
+        <activity
             android:name=".MockingTestActivity"
             android:exported="false" />
         <activity
