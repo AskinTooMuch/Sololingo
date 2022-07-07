@@ -24,24 +24,24 @@
             android:id="@+id/answer1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@string/en_default_answer" />
+            android:text="@string/default_answer" />
         <RadioButton
             android:id="@+id/answer2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@string/en_default_answer" />
+            android:text="@string/default_answer" />
 
         <RadioButton
             android:id="@+id/answer3"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@string/en_default_answer" />
+            android:text="@string/default_answer" />
 
         <RadioButton
             android:id="@+id/answer4"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="@string/en_default_answer" />
+            android:text="@string/default_answer" />
     </RadioGroup>
 
 </RelativeLayout>

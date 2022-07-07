@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:text="@string/en_back"
+            android:text="@string/back"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="@string/en_Next"
+            android:text="@string/Next"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:visibility="gone"
-            android:text="@string/en_Finish_Review"
+            android:text="@string/Finish_Review"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />

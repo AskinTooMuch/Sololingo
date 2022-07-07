@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_userProfile"
-        android:title="@string/en_User_profile"
+        android:title="@string/User_profile"
         android:icon="@drawable/ic_user_profile">
     </item>
     <item
         android:id="@+id/menu_testMocking"
-        android:title="@string/en_Mocking_Test"
+        android:title="@string/Mocking_Test"
         android:icon="@drawable/ic_user_profile">
     </item>
 

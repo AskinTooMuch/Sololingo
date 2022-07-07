@@ -82,11 +82,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
-                        Toast.makeText(LoginActivity.this,R.string.en_Login_successful,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,R.string.Login_successful,Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(),MainActivity.class);
                         startActivity(i);
                     }else{
-                        Toast.makeText(LoginActivity.this,R.string.en_Please_verify_your_email,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,R.string.Please_verify_your_email,Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(LoginActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
