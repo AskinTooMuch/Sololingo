@@ -5,9 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,12 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import Adapter.SubjectListAdapter;
-import Adapter.WordListAdapter;
 import Bean.Subject;
-import Bean.Word;
 import DAO.SubjectDAO;
 
 public class FragmentFlashcards extends Fragment {
@@ -54,7 +48,7 @@ public class FragmentFlashcards extends Fragment {
         vAddSubject.setOnClickListener(this::addSubject);
     }
 
-    public int getNextId(){
+    public int getNextId() {
         /*
         ArrayList<Integer> listId = new ArrayList<>();
         for (Subject s : subjectList) {
@@ -68,12 +62,12 @@ public class FragmentFlashcards extends Fragment {
         return listId.size()+1;
 
          */
-        return subjectListFull.get(subjectListFull.size()-1).getId()+1;
+        return subjectListFull.get(subjectListFull.size() - 1).getId() + 1;
     }
 
     private void addSubject(View view) {
-        Intent intent = new Intent(view.getContext(),AddSubjectActivity.class);
-        intent.putExtra("nextId",getNextId());
+        Intent intent = new Intent(view.getContext(), AddSubjectActivity.class);
+        intent.putExtra("nextId", getNextId());
         view.getContext().startActivity(intent);
     }
 
@@ -84,7 +78,7 @@ public class FragmentFlashcards extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Subject subject = (Subject) dataSnapshot.getValue(Subject.class);
                     subjectListFull.add(subject);
                     if (subject.getuId().equalsIgnoreCase(uId)) {
@@ -96,21 +90,18 @@ public class FragmentFlashcards extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(),"Error!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error!", Toast.LENGTH_SHORT).show();
             }
         });
-        if (subjectListFull.size()==0) {
-            Log.d("duong","empty");
-        }
-
     }
 
     private void inflateSubjectList() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rcvItems.setLayoutManager(linearLayoutManager);
 
-        mSubjectListAdapter = new SubjectListAdapter(getActivity(),subjectList);
+        mSubjectListAdapter = new SubjectListAdapter(getActivity(), subjectList);
         rcvItems.setAdapter(mSubjectListAdapter);
+        subjectList.clear();
     }
 
     @Override
