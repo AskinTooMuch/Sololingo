@@ -32,7 +32,7 @@
                 android:layout_marginBottom="0dp"
                 android:fontFamily="@font/helo"
                 android:includeFontPadding="false"
-                android:text="Register"
+                android:text="@string/en_Register"
                 android:textColor="#FDFDFD"
                 android:textSize="60sp"
                 tools:layout_editor_absoluteX="136dp"
@@ -44,7 +44,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="60dp"
                 android:backgroundTint="#75FFFFFF"
-                android:hint="Email"
+                android:hint="@string/en_Email"
                 tools:layout_editor_absoluteX="49dp" />
 
 
@@ -53,7 +53,7 @@
                 style="@style/insUsername"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
-                android:hint="Name"
+                android:hint="@string/en_Name"
                 tools:layout_editor_absoluteX="49dp" />
 
             <EditText
@@ -61,7 +61,7 @@
                 style="@style/insUsername"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
-                android:hint="Date of birth"
+                android:hint="@string/en_Date_of_birth"
                 tools:layout_editor_absoluteX="49dp" />
 
             <EditText
@@ -70,7 +70,7 @@
                 android:inputType="textPassword"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
-                android:hint="Password"
+                android:hint="@string/en_Password"
                 app:layout_constraintTop_toBottomOf="@+id/edEmail"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
                 tools:layout_editor_absoluteX="49dp" />
@@ -81,7 +81,7 @@
                 android:inputType="textPassword"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
-                android:hint="Re-Enter password"
+                android:hint="@string/en_Re_Enter_password"
                 app:layout_constraintTop_toBottomOf="@+id/edEmail"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
                 tools:layout_editor_absoluteX="49dp" />
@@ -93,7 +93,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
                 android:backgroundTint="#5167EC"
-                android:text="Register"
+                android:text="@string/en_Register"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +107,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#5167EC"
-                android:text="Login"
+                android:text="@string/en_login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"

@@ -168,9 +168,9 @@ public class UserProfile extends AppCompatActivity {
         }
         if (name.length() == 0 || name == null ||
                 DOB.length() == 0 || DOB == null) {
-            Toast.makeText(this, "You have to input all form", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.en_You_have_to_input_all_form, Toast.LENGTH_SHORT).show();
         } else if (date == null || date.after(new java.util.Date())) {
-            Toast.makeText(this, "Your date of birth is wrong!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.en_Your_date_of_birth_is_wrong, Toast.LENGTH_SHORT).show();
         } else {
             User user = new User(tvEmail.getText().toString().trim(), name, DOB);
             FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -179,10 +179,10 @@ public class UserProfile extends AppCompatActivity {
         }
         if ((password.length() == 0 || password == null) &&
                 (newPassword.length() != 0 && newPassword != null)) {
-            Toast.makeText(getApplicationContext(), "Your have to input old password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.en_Your_have_to_input_old_password, Toast.LENGTH_SHORT).show();
         } else if ((password.length() != 0 && password != null) &&
                 (newPassword.length() == 0 || newPassword == null)) {
-            Toast.makeText(getApplicationContext(), "Your have to input new password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.em_Your_have_to_input_new_password, Toast.LENGTH_SHORT).show();
         } else if (password.length() != 0 && password != null &&
                 newPassword.length() != 0 && newPassword != null) {
             firebaseAuth = FirebaseAuth.getInstance();
@@ -199,7 +199,7 @@ public class UserProfile extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Your password have been changed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.en_Your_password_have_been_changed, Toast.LENGTH_SHORT).show();
                                     edOldPassword.setText("");
                                     edNewPassword.setText("");
                                     firebaseAuth.signOut();
@@ -208,12 +208,12 @@ public class UserProfile extends AppCompatActivity {
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "Change password fail" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.en_Change_password_fail + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
                     }else {
-                        Toast.makeText(getApplicationContext(), "Your old password is wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.en_Your_old_password_is_wrong, Toast.LENGTH_SHORT).show();
                         edOldPassword.setText("");
                         edNewPassword.setText("");
                     }

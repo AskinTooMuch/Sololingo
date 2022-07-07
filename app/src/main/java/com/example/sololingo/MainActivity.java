@@ -26,6 +26,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.mlkit.common.model.DownloadConditions;
 import com.google.mlkit.common.model.RemoteModelManager;
 import com.google.mlkit.nl.translate.TranslateLanguage;
@@ -34,9 +36,12 @@ import com.google.mlkit.nl.translate.Translation;
 import com.google.mlkit.nl.translate.Translator;
 import com.google.mlkit.nl.translate.TranslatorOptions;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import Adapter.TabAdapter;
+import Bean.User;
+import DAO.UserDAO;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
+    private TextView tvNavHeaderName,tvNavHeaderEmail;
 
     protected void bindingView() {
         /*edtTranslateData = findViewById(R.id.edtTranslateData);
@@ -66,6 +72,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
+        configDrawerHeaderContent();
+    }
+
+    private void configDrawerHeaderContent() {
+        View view = navigationView.getHeaderView(0);
+        tvNavHeaderName = view.findViewById(R.id.tvNavHeaderName);
+        tvNavHeaderEmail = view.findViewById(R.id.tvNavHeaderEmail);
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        UserDAO userDAO = new UserDAO();
+        userDAO.getUserByEmail(firebaseUser.getEmail(), new UserDAO.FirebaseCallBack() {
+            @Override
+            public void onCallBack(ArrayList<User> userList) {
+
+            }
+
+            @Override
+            public void onCallBack(User user) {
+                tvNavHeaderName.setText(user.getName());
+                tvNavHeaderEmail.setText(user.getEmail());
+            }
+        });
     }
 
 
@@ -99,6 +126,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(this, UserProfile.class);
                 startActivity(intent);
+                break;
+            case R.id.menu_testMocking:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                Intent intent2 = new Intent(this, MockingTestActivity.class);
+                intent2.putExtra("topic_code","N5_moji");
+                intent2.putExtra("status",MockingTestActivity.TAKE_TEST_STATUS);
+                startActivity(intent2);
                 break;
         }
         return true;

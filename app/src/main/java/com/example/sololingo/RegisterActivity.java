@@ -148,13 +148,13 @@ public class RegisterActivity extends AppCompatActivity {
                 DOB.length() == 0 || DOB == null ||
                 password.length() == 0 || password == null ||
                 rePassword.length() == 0 || rePassword == null){
-            Toast.makeText(this,"You have to input all form",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.en_You_have_to_input_all_form, Toast.LENGTH_SHORT).show();
         }else if (!VALID_EMAIL_ADDRESS_REGEX.matcher(email).find()){
-            Toast.makeText(this,"Your email is wrong!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.en_Your_email_is_wrong,Toast.LENGTH_SHORT).show();
         }else if (!password.equals(rePassword)){
-            Toast.makeText(this,"Your password not matching with re-password",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.en_Your_passwor_not_matching_with_re_password,Toast.LENGTH_SHORT).show();
         }else if (date == null || date.after( new java.util.Date())){
-            Toast.makeText(this,"Your date of birth is wrong!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.en_Your_date_of_birth_is_wrong,Toast.LENGTH_SHORT).show();
         }else {
             firebaseAuth = FirebaseAuth.getInstance();
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -164,7 +164,7 @@ public class RegisterActivity extends AppCompatActivity {
                         firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(RegisterActivity.this, "Register successful, check your email to enable your account", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, R.string.en_register_successful, Toast.LENGTH_SHORT).show();
                                         saveUserInfor();
                                     }
                                 }

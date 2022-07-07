@@ -14,19 +14,21 @@
         android:scaleType="centerCrop"/>
 
     <TextView
+        android:id="@+id/tvNavHeaderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Duong"
+        android:text="@string/en_default_name"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"></TextView>
 
     <TextView
+        android:id="@+id/tvNavHeaderEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="duonghoang8801@gmail.com"
+        android:text="@string/en_default_email"
         android:textColor="@color/white"
         android:textSize="14sp"></TextView>
 </LinearLayout>
