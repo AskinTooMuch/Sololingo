@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sololingo</string>
+    <string name="textTranslate">テキストを入力</string>
+    <string name="tabTranslate">翻訳</string>
+    <string name="tabMemo">メモ</string>
+    <string name="tabWord">フラッシュカード</string>
+    <string name="sourceText">ソーステキスト</string>
+    <string name="or">また</string>
+    <string name="saySomething">何か言う</string>
+    <string name="textToTranslate">翻訳するテキスト</string>
+    <string name="switchLanguage">言語を切り替える</string>
+    <string name="mic">マイク</string>
+    <string name="title">題名</string>
+    <string name="noteContent">メモの内容</string>
+    <string name="back">戻る</string>
+    <string name="delete">消去</string>
+    <string name="date">日時</string>
+    <string name="yourSubject">コース</string>
+    <string name="darkTheme">テーマを変更する</string>
+    <string name="displayLanguage">言語</string>
+    <string name="appearance">外観</string>
+    <string name="restart_to_change">再起動して変更を適用してください</string>
+</resources>

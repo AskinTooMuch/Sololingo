@@ -12,18 +12,18 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/appearance"
-            android:title="@string/en_appearance">
+            android:title="@string/appearance">
             <menu>
                 <item
                     android:id="@+id/theme"
                     android:icon="@drawable/ic_baseline_theme"
-                    android:title="@string/en_darkTheme" />
+                    android:title="@string/darkTheme" />
 
                 <item
                     android:id="@+id/language"
                     android:icon="@drawable/ic_baseline_language"
-                    android:title="@string/en_displayLanguage" />
-
+                    app:actionLayout="@layout/spinner_language_selector"
+                    android:title="@string/displayLanguage" />
             </menu>
         </item>
     </group>

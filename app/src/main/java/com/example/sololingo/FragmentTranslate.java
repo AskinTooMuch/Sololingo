@@ -89,7 +89,6 @@ public class FragmentTranslate extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 from = position;
-                Log.d("TAG", "onItemSelected: from = "+from);
             }
 
             @Override
@@ -102,7 +101,6 @@ public class FragmentTranslate extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 to = position;
-                Log.d("TAG", "onItemSelected: to = "+to);
             }
 
             @Override

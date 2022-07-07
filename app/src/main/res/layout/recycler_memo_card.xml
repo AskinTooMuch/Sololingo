@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="4dp"
-        android:text="@string/en_title"
+        android:text="@string/title"
         android:textColor="?attr/colorOnBackground"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="4dp"
-        android:text="@string/en_date"
+        android:text="@string/date"
         android:textColor="?attr/colorOnBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMemoCardTitle" />
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:contentDescription="@string/en_noteContent"
+        android:contentDescription="@string/noteContent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_action_note" />

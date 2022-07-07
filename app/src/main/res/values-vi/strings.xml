@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sololingo</string>
+    <string name="textTranslate">Nhập văn bản</string>
+    <string name="tabTranslate">Dịch</string>
+    <string name="tabMemo">Ghi chú</string>
+    <string name="tabWord">Thẻ ghi nhớ</string>
+    <string name="sourceText">Văn bản nguồn</string>
+    <string name="or">Hoặc</string>
+    <string name="saySomething">Nói gì đó...</string>
+    <string name="textToTranslate">Văn bản cần dịch</string>
+    <string name="switchLanguage">Chuyển đổi ngôn ngữ</string>
+    <string name="mic">Microphone</string>
+    <string name="title">Tiêu đề</string>
+    <string name="noteContent">Nội dung ghi chú</string>
+    <string name="back">Trở lại</string>
+    <string name="delete">Xoá</string>
+    <string name="date">Ngày</string>
+    <string name="yourSubject">(Các) môn học</string>
+    <string name="darkTheme">Thay đổi chủ đề</string>
+    <string name="displayLanguage">Ngôn ngữ</string>
+    <string name="appearance">Giao diện</string>
+    <string name="restart_to_change">Xin vui lòng khởi động lại app để áp dụng thay đổi</string>
+</resources>
