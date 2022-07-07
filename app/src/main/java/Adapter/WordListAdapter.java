@@ -10,7 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sololingo.EditWordActivity;
 import com.example.sololingo.R;
+import com.example.sololingo.ViewWordsActivity;
 
 import java.util.ArrayList;
 
@@ -40,9 +42,13 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     @Override
     public void onBindViewHolder(@NonNull WordListAdapter.WordViewHolder holder, int position) {
         // Retrieve the data for that position
+        int mWordId = mWordList.get(position).getId();
         String mWord = mWordList.get(position).getWord();
         String mWordDef = mWordList.get(position).getDefinition();
         int mSubjectId = mWordList.get(position).getSubjectId();
+        String image = mWordList.get(position).getImage();
+
+        holder.word= new Word(mWordId,mSubjectId,mWord,mWordDef,image);
         // Add the data to the view
         holder.wordItem.setText(mWord);
         holder.wordItemDef.setText(mWordDef);
@@ -58,6 +64,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         private final WordListAdapter mAdapter;
         protected TextView wordItem;
         protected TextView wordItemDef;
+        protected Word word;
 
         public WordViewHolder(@NonNull View itemView, WordListAdapter adapter) {
             super(itemView);
@@ -69,7 +76,9 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
         @Override
         public void onClick(View v) {
-
+            Intent intent = new Intent(context, EditWordActivity.class);
+            intent.putExtra("word",word);
+            context.startActivity(intent);
         }
     }
 

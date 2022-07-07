@@ -63,6 +63,17 @@
     <string name="error_download">Model could not be downloaded because internet connection or other internal error.</string>
     <string name="try_again">Something went wrong. Try again when the model finish downloading</string>
 
+
+    <string name="hint_subjectName">Subject Name</string>
+    <string name="hint_Word">Word</string>
+    <string name="hint_WordDefinition">Word Definition</string>
+    <string name="msg_confirmDeleteSubject">Delete a Subject also delete all words in it. Confirm to delete this Subject?</string>
+    <string name="msg_confirmDeleteWord">Confirm to delete this Word?</string>
+    <string name="msg_updateSubject">Update Subject success</string>
+    <string name="msg_updateWord">Update Word success</string>
+    <string name="msg_deleteSubjectSuccess">Delete Word success</string>
+    <string name="msg_deleteWordSuccess">Delete Word success</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="open_navigation_drawer" translatable="false">Open navigation drawer</string>

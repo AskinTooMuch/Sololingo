@@ -48,6 +48,13 @@
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_main.xml" value="0.24818840579710144" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_register.xml" value="0.24818840579710144" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_user_profile.xml" value="0.128" />
+        <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/layout/activity_add_subject.xml" value="0.1" />
+        <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/layout/activity_add_word.xml" value="0.16304347826086957" />
+        <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/layout/activity_edit_subject.xml" value="0.16304347826086957" />
+        <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/layout/activity_edit_word.xml" value="0.16304347826086957" />
+        <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/layout/activity_learn_word.xml" value="0.16304347826086957" />
+        <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/layout/activity_view_words.xml" value="0.16304347826086957" />
+        <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/layout/fragment_flashcards.xml" value="0.16304347826086957" />
       </map>
     </option>
   </component>

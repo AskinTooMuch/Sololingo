@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,48 +24,70 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import Adapter.SubjectListAdapter;
 import Adapter.WordListAdapter;
 import Bean.Subject;
 import Bean.Word;
+import DAO.SubjectDAO;
 
 public class FragmentFlashcards extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
 
     private ArrayList<Subject> subjectList = new ArrayList<>();
+    private ArrayList<Subject> subjectListFull = new ArrayList<>();
     private RecyclerView rcvItems;
     private SubjectListAdapter mSubjectListAdapter;
     private View vAddSubject;
+    private SubjectDAO subjectDAO;
 
     private void bindingView(View view) {
+        subjectDAO = new SubjectDAO();
         rcvItems = view.findViewById(R.id.rcvList);
         vAddSubject = view.findViewById(R.id.vAddSubject);
         database = FirebaseDatabase.getInstance();
     }
 
     private void bindingAction(View view) {
-        getSubjectList();
-        inflateSubjectList();
         vAddSubject.setOnClickListener(this::addSubject);
+    }
+
+    public int getNextId(){
+        /*
+        ArrayList<Integer> listId = new ArrayList<>();
+        for (Subject s : subjectList) {
+            listId.add(s.getId());
+        }
+        Collections.sort(listId);
+        if (listId.get(0)!=1) return 1;
+        for (int i = 0; i < listId.size()-1; i++){
+            if ((listId.get(i)+1)!= listId.get(i+1)) return i+2;
+        }
+        return listId.size()+1;
+
+         */
+        return subjectListFull.get(subjectListFull.size()-1).getId()+1;
     }
 
     private void addSubject(View view) {
         Intent intent = new Intent(view.getContext(),AddSubjectActivity.class);
+        intent.putExtra("nextId",getNextId());
         view.getContext().startActivity(intent);
-
     }
 
     private void getSubjectList() {
+        subjectList.clear();
         String uId = "vvduong108@gmail.com";
         myRef = database.getReference("subject");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Subject subject = dataSnapshot.getValue(Subject.class);
-                    if (subject.getuId().equalsIgnoreCase(uId)){
+                    Subject subject = (Subject) dataSnapshot.getValue(Subject.class);
+                    subjectListFull.add(subject);
+                    if (subject.getuId().equalsIgnoreCase(uId)) {
                         subjectList.add(subject);
                     }
                 }
@@ -76,13 +99,16 @@ public class FragmentFlashcards extends Fragment {
                 Toast.makeText(getActivity(),"Error!",Toast.LENGTH_SHORT).show();
             }
         });
+        if (subjectListFull.size()==0) {
+            Log.d("duong","empty");
+        }
+
     }
 
     private void inflateSubjectList() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rcvItems.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(),DividerItemDecoration.HORIZONTAL);
-        rcvItems.addItemDecoration(dividerItemDecoration);
+
         mSubjectListAdapter = new SubjectListAdapter(getActivity(),subjectList);
         rcvItems.setAdapter(mSubjectListAdapter);
     }
@@ -94,11 +120,15 @@ public class FragmentFlashcards extends Fragment {
         View mView = inflater.inflate(R.layout.fragment_flashcards, container, false);
         bindingView(mView);
         bindingAction(mView);
-
-
-
-
+        getSubjectList();
+        inflateSubjectList();
         return mView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getSubjectList();
+        inflateSubjectList();
+    }
 }

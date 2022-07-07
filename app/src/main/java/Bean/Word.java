@@ -1,6 +1,8 @@
 package Bean;
 
-public class Word {
+import java.io.Serializable;
+
+public class Word implements Serializable {
     private int id;
     private int subjectId;
     private String word;

@@ -10,10 +10,11 @@
 
     <View
         android:id="@+id/vAddSubject"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="35dp"
         android:layout_marginBottom="11dp"
-        android:background="@drawable/plus"
+        android:background="@drawable/ic_action_add"
         app:layout_constraintBottom_toTopOf="@+id/rcvList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.92"
