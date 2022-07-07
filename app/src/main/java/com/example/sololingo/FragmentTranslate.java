@@ -89,7 +89,6 @@ public class FragmentTranslate extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 from = position;
-                Log.d("TAG", "onItemSelected: from = "+from);
             }
 
             @Override
@@ -102,7 +101,6 @@ public class FragmentTranslate extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 to = position;
-                Log.d("TAG", "onItemSelected: to = "+to);
             }
 
             @Override
@@ -117,7 +115,7 @@ public class FragmentTranslate extends Fragment {
                 Intent micIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 micIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 micIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-                micIntent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Let us hear your beautiful voice");
+                micIntent.putExtra(RecognizerIntent.EXTRA_PROMPT,R.string.let_hear);
                 try {
                     startActivityForResult(micIntent, REQUEST_PERMISSION_CODE);
                 } catch (Exception e){
@@ -162,7 +160,7 @@ public class FragmentTranslate extends Fragment {
         languageTranslator = Translation.getClient(options);
         if (!edtSourceText.getText().toString().isEmpty()) {
             tvTranslateResult.setTextColor(getResources().getColor(R.color.red));
-            tvTranslateResult.setText("Please wait while we making calls to the Oracles");
+            tvTranslateResult.setText(R.string.please_wait);
             String source = edtSourceText.getText().toString();
             translatorFlag = true;
             DownloadConditions conditions = new DownloadConditions.Builder()
@@ -183,8 +181,7 @@ public class FragmentTranslate extends Fragment {
                                 public void onFailure(@NonNull Exception e) {
                                     // Couldn't load
                                     tvTranslateResult.setTextColor(getResources().getColor(R.color.red));
-                                    tvTranslateResult.setText(
-                                            "Model could not be downloaded because internet connection or other internal error.");
+                                    tvTranslateResult.setText(R.string.error_download);
                                     translatorFlag = false;
                                 }
                             });
@@ -205,8 +202,7 @@ public class FragmentTranslate extends Fragment {
                                     public void onFailure(@NonNull Exception e) {
                                         // Error.
                                         tvTranslateResult.setTextColor(getResources().getColor(R.color.red));
-                                        tvTranslateResult.setText(
-                                                "Something went wrong. Try again when the model finish downloading");
+                                        tvTranslateResult.setText(R.string.try_again);
                                     }
                                 });
             }

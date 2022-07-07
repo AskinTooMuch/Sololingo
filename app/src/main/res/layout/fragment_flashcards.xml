@@ -24,7 +24,7 @@
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginBottom="12dp"
-        android:text="@string/en_yourSubject"
+        android:text="@string/yourSubject"
         app:layout_constraintBottom_toTopOf="@+id/rcvList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"

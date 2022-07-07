@@ -21,10 +21,14 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
 import Bean.Memo;
+import Bean.User;
+import DAO.MemoDAO;
+import DAO.UserDAO;
 
 public class ActivityMemoDetail extends AppCompatActivity {
     public static final String ACTION_DETAIL = "memoDetail";
@@ -37,9 +41,8 @@ public class ActivityMemoDetail extends AppCompatActivity {
     private Memo memo;
     private String action;
     private String id;
-    private FirebaseFirestore db;
     private SharedPreferences sharedPref;
-    private FirebaseAuth firebaseAuth;
+    private MemoDAO memoDAO;
 
     private void bindingView(){
         ibtnMemoReturn = findViewById(R.id.ibtnMemoReturn);
@@ -58,20 +61,7 @@ public class ActivityMemoDetail extends AppCompatActivity {
         Log.d(TAG, "finishActivityNoSave: Delete");
         saveFlag = false;
         if (Objects.equals(action, ACTION_DETAIL)){
-            db.collection("memo").document(id)
-                    .delete()
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d(TAG, "DocumentSnapshot successfully deleted!");
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error deleting document", e);
-                        }
-                    });
+            memoDAO.deleteMemo(id);
         }
         finish();
     }
@@ -92,28 +82,23 @@ public class ActivityMemoDetail extends AppCompatActivity {
                     //Get memo detail
                     id = comingIntent.getStringExtra("id");
                     Log.d(TAG, "intentInitial: "+id);
-                    firebaseAuth = FirebaseAuth.getInstance();
-                    db.collection("memo")
-                            .document(id)
-                            .get()
-                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                memo = document.toObject(Memo.class);
+                    memoDAO.getMemo(id, new MemoDAO.FirebaseCallBack() {
+                        @Override
+                        public void onCallBack(ArrayList<Memo> memoList) {
+
+                        }
+
+                        @Override
+                        public void onCallBack(Memo memo) {
+                            try {
                                 edtMemoTitle.setText(memo.getTitle());
                                 edtMemoContent.setText(memo.getContent());
-                            } else {
-                                Log.d(TAG, "No such document");
+                            } catch (NullPointerException n){
+                                Log.d(TAG, "intentInitial: null content");
+                                finish();
                             }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
                         }
-                    }
-                });
+                    });
                     break;
             }
         }
@@ -125,9 +110,9 @@ public class ActivityMemoDetail extends AppCompatActivity {
         setContentView(R.layout.activity_memo_detail);
         bindingView();
         bindingAction();
-        db = FirebaseFirestore.getInstance();
-        intentInitial();
+        memoDAO = new MemoDAO();
         sharedPref = getApplicationContext().getSharedPreferences("LoginInformation",this.MODE_PRIVATE);
+        intentInitial();
     }
 
     @Override
@@ -159,23 +144,8 @@ public class ActivityMemoDetail extends AppCompatActivity {
         }
         String userEmail = sharedPref.getString("email","");
         Date lastModified = new Date();
-        Memo newMemo = new Memo(userEmail, lastModified, lastModified, title, content, id);
-        firebaseAuth = FirebaseAuth.getInstance();
-        //FirebaseUser curUser = firebaseAuth.getCurrentUser();
-        db.collection("memo").document(id)
-                .set(newMemo)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
-                    }
-                });
+        Memo updateMemo = new Memo(userEmail, lastModified, lastModified, title, content, id);
+        memoDAO.updateMemo(updateMemo);
     }
 
     private void addMemo() {
@@ -189,22 +159,6 @@ public class ActivityMemoDetail extends AppCompatActivity {
         String userEmail = sharedPref.getString("email","");
         Date lastModified = new Date();
         Memo newMemo = new Memo(userEmail, lastModified, lastModified, title, content, null);
-        // Add a new document with a generated ID
-        firebaseAuth = FirebaseAuth.getInstance();
-        //FirebaseUser curUser = firebaseAuth.getCurrentUser();
-        db.collection("memo")
-                .add(newMemo)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d(TAG, "Error adding document", e);
-                    }
-                });
+        memoDAO.addMemo(newMemo);
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_userProfile"
         android:title="@string/en_User_profile"
@@ -10,4 +11,25 @@
         android:title="@string/en_Mocking_Test"
         android:icon="@drawable/ic_user_profile">
     </item>
+
+    <group
+        android:id="@+id/menu_Appearances"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/appearance"
+            android:title="@string/appearance">
+            <menu>
+                <item
+                    android:id="@+id/theme"
+                    android:icon="@drawable/ic_baseline_theme"
+                    android:title="@string/darkTheme" />
+
+                <item
+                    android:id="@+id/language"
+                    android:icon="@drawable/ic_baseline_language"
+                    app:actionLayout="@layout/spinner_language_selector"
+                    android:title="@string/displayLanguage" />
+            </menu>
+        </item>
+    </group>
 </menu>

@@ -48,13 +48,13 @@ public class TabAdapter  extends FragmentStatePagerAdapter {
         String title = "";
         switch (position){
             case 0:
-                title = context.getString(R.string.en_tabTranslate);
+                title = context.getString(R.string.tabTranslate);
                 break;
             case 1:
-                title = context.getString(R.string.en_tabWord);
+                title = context.getString(R.string.tabWord);
                 break;
             case 2:
-                title = context.getString(R.string.en_tabMemo);
+                title = context.getString(R.string.tabMemo);
                 break;
         }
         return title;
