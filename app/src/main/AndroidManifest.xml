@@ -16,35 +16,54 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sololingo"
         tools:targetApi="31"
-        android:configChanges="locale|orientation">
+        android:configChanges="locale|orientation"
+        android:screenOrientation="portrait">
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".AddWordActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".AddSubjectActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".EditWordActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".EditSubjectActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".LearnWordActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".MockingTestActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".UserProfile"
             android:exported="false" />
         <activity
             android:name=".ActivityMemoDetail"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".ViewWordsActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -54,9 +73,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".RegisterActivity"
             android:exported="false"/>
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".MainActivity"
             android:exported="false"/>
     </application>
