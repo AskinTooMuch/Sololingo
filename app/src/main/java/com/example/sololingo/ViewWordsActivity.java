@@ -66,7 +66,7 @@ public class ViewWordsActivity extends AppCompatActivity {
     }
 
     private void learn(View view) {
-        Intent intent = new Intent(ViewWordsActivity.this, LearnWordActivity.class);
+        Intent intent = new Intent(ViewWordsActivity.this, LearnActivity.class);
         intent.putExtra("subject",subject);
         startActivity(intent);
     }
@@ -151,10 +151,10 @@ public class ViewWordsActivity extends AppCompatActivity {
     private void inflateWordsList() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewWordsActivity.this);
         rcvItems.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(ViewWordsActivity.this, DividerItemDecoration.HORIZONTAL);
-        rcvItems.addItemDecoration(dividerItemDecoration);
+
         mWordListAdapter = new WordListAdapter(ViewWordsActivity.this, wordList);
         rcvItems.setAdapter(mWordListAdapter);
+        wordList.clear();
     }
 
     @Override
@@ -163,7 +163,7 @@ public class ViewWordsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_words);
         bindingView();
         bindingAction();
-        getWordsList();
+        //getWordsList();
         inflateWordsList();
     }
 
