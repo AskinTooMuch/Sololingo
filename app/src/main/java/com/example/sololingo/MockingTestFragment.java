@@ -1,5 +1,6 @@
 package com.example.sololingo;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -145,23 +146,24 @@ public class MockingTestFragment extends Fragment {
         });
     }
 
+    @SuppressLint("ResourceAsColor")
     private void reviewQuestion() {
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
-            radioGroup.getChildAt(i).setEnabled(false);
+            radioGroup.getChildAt(i).setClickable(false);
         }
         int chosenAnswer = question.getChosenAnswer();
         switch (chosenAnswer){
-            case 1:answer1.setTextColor(Color.RED);break;
-            case 2:answer2.setTextColor(Color.RED);break;
-            case 3:answer3.setTextColor(Color.RED);break;
-            case 4:answer4.setTextColor(Color.RED);break;
+            case 1:answer1.setBackgroundColor(R.color.red_error);break;
+            case 2:answer2.setBackgroundColor(R.color.red_error);break;
+            case 3:answer3.setBackgroundColor(R.color.red_error);break;
+            case 4:answer4.setBackgroundColor(R.color.red_error);break;
         }
         int rightAnswer = question.getRightAnswer();
         switch (rightAnswer){
-            case 1:answer1.setTextColor(Color.GREEN);break;
-            case 2:answer2.setTextColor(Color.GREEN);break;
-            case 3:answer3.setTextColor(Color.GREEN);break;
-            case 4:answer4.setTextColor(Color.GREEN);break;
+            case 1:answer1.setBackgroundColor(R.color.green);break;
+            case 2:answer2.setBackgroundColor(R.color.green);break;
+            case 3:answer3.setBackgroundColor(R.color.green);break;
+            case 4:answer4.setBackgroundColor(R.color.green);break;
         }
     }
 

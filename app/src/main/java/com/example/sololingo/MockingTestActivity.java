@@ -2,6 +2,7 @@ package com.example.sololingo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -34,6 +35,7 @@ public class MockingTestActivity extends AppCompatActivity {
     public static final String REVIEW_TEST_STATUS = "reviewTest";
     private TextView tvBack, tvCurrentQuestion, tvTotalQuestion, tvNext, tvSubmit, tvFinishReview;
     private ViewPager viewPager;
+    private Toolbar toolbar;
     private MockingTestAdapter mockingTestAdapter;
     private ArrayList<Question> listQuestions = new ArrayList<>();
     private String topicCode, status, answerSheetId;
@@ -46,11 +48,11 @@ public class MockingTestActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.mocking_view_pager);
         tvSubmit = findViewById(R.id.tvSubmit);
         tvFinishReview = findViewById(R.id.tvFinishReview);
+        toolbar = findViewById(R.id.mocking_toolbar);
     }
 
     private void bindingAction() {
         initIntent();
-        fakeDataBase();
         getListQuestion();
         tvBack.setOnClickListener(this::onBackClick);
         tvNext.setOnClickListener(this::onNextClick);
@@ -83,10 +85,23 @@ public class MockingTestActivity extends AppCompatActivity {
                 @Override
                 public void onCallBack(ArrayList<Question> listQuestion) {
                     listQuestions = listQuestion;
+                    int i = 0;
+                    for (Question question: listQuestion){
+                        if(question.getRightAnswer() == question.getChosenAnswer()){
+                            i++;
+                            Log.d("Duong", "onCallBacko: " + i);
+                        }
+                    }
+                    int g = listQuestion.size();
+                    i = Math.round(i*100/g);
+                    toolbar.setTitle(toolbar.getTitle().toString() + " " +i+" / 100");
                     prepareContent();
                 }
             });
         }
+    }
+
+    private void getUserMark() {
 
     }
 
