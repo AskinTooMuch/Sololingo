@@ -29,6 +29,7 @@
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/activity_main.xml" value="0.24561403508771928" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/activity_memo_detail.xml" value="0.264" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/activity_mocking_test.xml" value="0.215625" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment__flashcards.xml" value="0.18697916666666667" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment__translate.xml" value="0.2967818831942789" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/fragment_flashcards.xml" value="0.23143115942028986" />
@@ -55,7 +56,7 @@
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_mocking_test.xml" value="0.2" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_register.xml" value="0.24818840579710144" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_select_test.xml" value="0.25" />
-        <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
+        <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_user_profile.xml" value="0.128" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/fragment__flashcards.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/fragment__translate.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/fragment_flashcards.xml" value="0.25" />
@@ -72,7 +73,6 @@
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/menu/drawer_menu.xml" value="0.24895833333333334" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/menu/mainmenu.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/menu/select_test.xml" value="0.25" />
-        <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/layout/activity_user_profile.xml" value="0.128" />
         <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1255" />
         <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/layout/activity_add_subject.xml" value="0.1" />
         <entry key="..\:/Users/admin/Documents/GitHub/Sololingo/app/src/main/res/layout/activity_add_word.xml" value="0.16304347826086957" />

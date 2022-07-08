@@ -41,7 +41,7 @@
     <string name="Password">パスワード</string>
     <string name="rememberMe">ログイン情報を覚える</string>
     <string name="Email">メールアドレス</string>
-    <string name="Donnot_have_a_account">アカウントをお持ちではないか？ サインアップ。</string>
+    <string name="Dont_have_account">アカウントをお持ちではないか？ サインアップ。</string>
     <string name="Register">登録</string>
     <string name="Name">名</string>
     <string name="Date_of_birth">生年月日</string>
@@ -69,4 +69,8 @@
     <string name="msg_updateWord">Update Word success</string>
     <string name="msg_deleteSubjectSuccess">Delete Word success</string>
     <string name="msg_deleteWordSuccess">Delete Word success</string>
+    <string name="home">ホーム</string>
+    <string name="vocabulary">単語</string>
+    <string name="reading">読む</string>
+    <string name="listening">聞く</string>
 </resources>

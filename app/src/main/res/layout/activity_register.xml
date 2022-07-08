@@ -10,7 +10,7 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/background"
+        android:background="@drawable/backgroundblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -67,10 +67,10 @@
             <EditText
                 android:id="@+id/edPassword"
                 style="@style/insUsername"
-                android:inputType="textPassword"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
                 android:hint="@string/Password"
+                android:inputType="textPassword"
                 app:layout_constraintTop_toBottomOf="@+id/edEmail"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
                 tools:layout_editor_absoluteX="49dp" />
@@ -78,10 +78,10 @@
             <EditText
                 android:id="@+id/edRePassword"
                 style="@style/insUsername"
-                android:inputType="textPassword"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
                 android:hint="@string/Re_Enter_password"
+                android:inputType="textPassword"
                 app:layout_constraintTop_toBottomOf="@+id/edEmail"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
                 tools:layout_editor_absoluteX="49dp" />

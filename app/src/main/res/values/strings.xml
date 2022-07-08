@@ -18,7 +18,7 @@
     <string name="Password">Password</string>
     <string name="rememberMe">Remember me</string>
     <string name="Email">Email</string>
-    <string name="Donot_have_a_account">Do not have a account? Sign up.</string>
+    <string name="Dont_have_account">Do not have an account? Sign up.</string>
     <string name="Register">Register</string>
     <string name="Name">Name</string>
     <string name="Date_of_birth">Date of birth</string>
@@ -40,11 +40,11 @@
     <string name="reading">Reading</string>
     <string name="listening">Listening</string>
     <string name="home">Home</string>
-    <string name="N5">N5</string>
-    <string name="N4">N4</string>
-    <string name="N3">N3</string>
-    <string name="N2">N2</string>
-    <string name="N1">N1</string>
+    <string name="N5" translatable="false">N5</string>
+    <string name="N4" translatable="false">N4</string>
+    <string name="N3" translatable="false">N3</string>
+    <string name="N2" translatable="false">N2</string>
+    <string name="N1" translatable="false">N1</string>
     <!--Resource string English-en <string name=""></string>-->
     <string name="textTranslate">Enter text</string>
     <string name="tabTranslate">"Translate"</string>

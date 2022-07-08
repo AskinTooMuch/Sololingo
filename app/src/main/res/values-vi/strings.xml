@@ -41,7 +41,7 @@
     <string name="Password">Mật khẩu</string>
     <string name="rememberMe">Ghi nhớ đăng nhập</string>
     <string name="Email">Email</string>
-    <string name="Donnot_have_a_account">Không có tài khoản? Đăng ký ngay.</string>
+    <string name="Dont_have_account">Không có tài khoản? Đăng ký ngay.</string>
     <string name="Register">Đăng ký</string>
     <string name="Name">Tên</string>
     <string name="Date_of_birth">Ngày sinh</string>
@@ -70,4 +70,8 @@
     <string name="msg_updateWord">Update Word success</string>
     <string name="msg_deleteSubjectSuccess">Delete Word success</string>
     <string name="msg_deleteWordSuccess">Delete Word success</string>
+    <string name="home">Trang chủ</string>
+    <string name="vocabulary">Từ vựng</string>
+    <string name="reading">Đọc</string>
+    <string name="listening">Nghe</string>
 </resources>
