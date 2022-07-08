@@ -21,6 +21,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     private final ArrayList<Subject> mSubjectList;
     LayoutInflater mInflater;
     Context context;
+
     public SubjectListAdapter(Context context, ArrayList<Subject> subjectList) {
         this.context = context;
         mInflater = LayoutInflater.from(context);
@@ -40,12 +41,12 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     @Override
     public void onBindViewHolder(@NonNull SubjectListAdapter.SubjectViewHolder holder, int position) {
         // Retrieve the data for that position
-        String mSubject= mSubjectList.get(position).getName();
+        String mSubject = mSubjectList.get(position).getName();
         String mSubjectUId = mSubjectList.get(position).getuId();
         int mSubjectId = mSubjectList.get(position).getId();
-
+        int mSubjectCurProgress = mSubjectList.get(position).getCurProgress();
         // Add the data to the view
-        holder.subject = new Subject(mSubjectId,mSubjectUId,mSubject);
+        holder.subject = new Subject(mSubjectId, mSubjectUId, mSubject, mSubjectCurProgress);
         holder.subjectItem.setText(mSubject);
     }
 
@@ -72,7 +73,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, ViewWordsActivity.class);
-            intent.putExtra("subject",subject);
+            intent.putExtra("subject", subject);
             context.startActivity(intent);
         }
     }

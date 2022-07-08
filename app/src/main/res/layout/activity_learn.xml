@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LearnWordActivity">
-
+    tools:context=".LearnActivity">
 
     <View
         android:id="@+id/vLeft"
@@ -14,7 +13,7 @@
         android:layout_marginTop="228dp"
         android:background="@drawable/ic_action_left"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +24,7 @@
         android:layout_marginTop="228dp"
         android:background="@drawable/ic_action_right"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +37,7 @@
         android:text="@string/hint_Word"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,12 +45,25 @@
         android:id="@+id/tvWordDef"
         android:layout_width="250dp"
         android:layout_height="80dp"
-        android:singleLine="false"
         android:gravity="center"
+        android:singleLine="false"
         android:text="@string/hint_WordDefinition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvWord" />
+
+    <TextView
+        android:id="@+id/tvProgress"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="312dp"
+        android:gravity="center"
+        android:text="@string/hint_Word"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

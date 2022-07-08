@@ -43,7 +43,7 @@ public class AddSubjectActivity extends AppCompatActivity {
         String uId = "vvduong108@gmail.com";
 
         String name = edtSubjectName.getText().toString();
-        return new Subject(id,uId,name);
+        return new Subject(id,uId,name,0);
     }
     private void addSubject(View view) {
         Subject s = getSubject();

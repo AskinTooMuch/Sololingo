@@ -66,7 +66,7 @@ public class ViewWordsActivity extends AppCompatActivity {
     }
 
     private void learn(View view) {
-        Intent intent = new Intent(ViewWordsActivity.this, LearnWordActivity.class);
+        Intent intent = new Intent(ViewWordsActivity.this, LearnActivity.class);
         intent.putExtra("subject",subject);
         startActivity(intent);
     }
