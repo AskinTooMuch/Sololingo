@@ -164,15 +164,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     switch (position){
                         case 0: editor.putString("curLanguage","vi");
                             editor.apply();
-                            Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
+                            Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(i1);
+                            //Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
                             break;
                         case 1: editor.putString("curLanguage","en");
                             editor.apply();
-                            Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
+                            Intent i2 = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(i2);
+                            //Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
                             break;
                         case 2: editor.putString("curLanguage","ja");
                             editor.apply();
-                            Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
+                            Intent i3 = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(i3);
+                            //Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
                             break;
                     }
             }
