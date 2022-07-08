@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:layout_marginBottom="40dp"
+    android:layout_marginBottom="0dp"
     tools:context=".MockingTestFragment">
 
 
@@ -12,36 +12,41 @@
     <TextView
         android:id="@+id/tvQuestion"
         android:layout_width="match_parent"
-        android:layout_height="452dp" />
+        android:layout_height="385dp"
+        android:text="@string/Mocking_Test"
+        android:textSize="18sp" />
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-
         <RadioButton
             android:id="@+id/answer1"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/default_answer" />
+            android:layout_height="75dp"
+            android:text="@string/default_answer"
+            android:textSize="18sp" />
         <RadioButton
             android:id="@+id/answer2"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/default_answer" />
+            android:layout_height="75dp"
+            android:text="@string/default_answer"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/answer3"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/default_answer" />
+            android:layout_height="75dp"
+            android:text="@string/default_answer"
+            android:textSize="18sp"  />
 
         <RadioButton
             android:id="@+id/answer4"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/default_answer" />
+            android:layout_height="75dp"
+            android:text="@string/default_answer"
+            android:textSize="18sp"  />
     </RadioGroup>
 
 </RelativeLayout>

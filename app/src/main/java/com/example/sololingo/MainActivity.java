@@ -198,6 +198,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         switch (id) {
+            case R.id.menu_Home:
+                Intent intent3 = new Intent(this, MainActivity.class);
+                startActivity(intent3);
+                break;
             case R.id.menu_userProfile:
                 drawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(this, UserProfile.class);
@@ -205,10 +209,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.menu_testMocking:
                 drawerLayout.closeDrawer(GravityCompat.START);
-                Intent intent2 = new Intent(this, MockingTestActivity.class);
+                /*Intent intent2 = new Intent(this, MockingTestActivity.class);
                 intent2.putExtra("topic_code","N5_moji");
                 intent2.putExtra("status",MockingTestActivity.TAKE_TEST_STATUS);
+                startActivity(intent2);*/
+                Intent intent2 = new Intent(this,SelectTestActivity.class);
                 startActivity(intent2);
+                break;
             case R.id.theme:
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("Appearance", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();

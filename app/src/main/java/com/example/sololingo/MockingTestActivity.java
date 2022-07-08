@@ -50,6 +50,7 @@ public class MockingTestActivity extends AppCompatActivity {
 
     private void bindingAction() {
         initIntent();
+        fakeDataBase();
         getListQuestion();
         tvBack.setOnClickListener(this::onBackClick);
         tvNext.setOnClickListener(this::onNextClick);
