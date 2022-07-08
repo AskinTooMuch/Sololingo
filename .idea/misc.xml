@@ -3,22 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_add.xml" value="0.215" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_addnote.xml" value="0.2555" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_cancel.xml" value="0.147" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_check.xml" value="0.215" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_confirm.xml" value="0.147" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_delete.xml" value="0.2195" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_edit.xml" value="0.215" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_helpDark.xml" value="0.117" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_helpdark.xml" value="0.147" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_learn.xml" value="0.215" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_left.xml" value="0.215" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_menudark.xml" value="0.147" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_mic.xml" value="0.147" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_note.xml" value="0.147" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_return.xml" value="0.147" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_return2.xml" value="0.2195" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_right.xml" value="0.215" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_switch.xml" value="0.147" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable-anydpi/ic_action_translate.xml" value="0.147" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/border_no_fill.xml" value="0.2555" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/bottom_line.xml" value="0.2545" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_action_add.xml" value="0.21" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_baseline_language.xml" value="0.2555" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_baseline_notifications.xml" value="0.2555" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_baseline_theme.xml" value="0.2555" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_launcher_sololingo_background.xml" value="0.1735" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/drawable/ic_theme.xml" value="0.2555" />
@@ -44,6 +52,7 @@
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/recycler_memo_card.xml" value="0.4" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/spinner_item.xml" value="0.1983695652173913" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/layout/spinner_selector_item.xml" value="0.15208333333333332" />
+        <entry key="..\:/Android/Sololingo/app/src/main/res/layout/time_picker_dialog.xml" value="0.4" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/menu/drawer_menu.xml" value="0.1" />
         <entry key="..\:/Android/Sololingo/app/src/main/res/menu/mainmenu.xml" value="0.24895833333333334" />
         <entry key="..\:/AndroidStudio/practice/Sololingo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.255" />

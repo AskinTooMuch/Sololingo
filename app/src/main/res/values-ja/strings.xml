@@ -73,4 +73,9 @@
     <string name="vocabulary">単語</string>
     <string name="reading">読む</string>
     <string name="listening">聞く</string>
+    <string name="disable_notify">無効にする</string>
+    <string name="apply">確かめる</string>
+    <string name="cancel">キャンセル</string>
+    <string name="settings">設定</string>
+    <string name="notifications">通知</string>
 </resources>

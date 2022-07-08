@@ -74,4 +74,9 @@
     <string name="vocabulary">Từ vựng</string>
     <string name="reading">Đọc</string>
     <string name="listening">Nghe</string>
+    <string name="disable_notify">Ngừng thông báo</string>
+    <string name="apply">Xác nhận</string>
+    <string name="cancel">Huỷ</string>
+    <string name="settings">Cài đặt</string>
+    <string name="notifications">Thông báo</string>
 </resources>

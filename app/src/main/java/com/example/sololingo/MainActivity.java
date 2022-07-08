@@ -1,5 +1,7 @@
 package com.example.sololingo;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -39,6 +41,7 @@ import com.google.mlkit.nl.translate.Translator;
 import com.google.mlkit.nl.translate.TranslatorOptions;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Set;
 
 
@@ -46,6 +49,9 @@ import java.util.Locale;
 import Adapter.TabAdapter;
 import Bean.User;
 import DAO.UserDAO;
+import Service.NotificationService;
+import Service.ReminderBroadcast;
+import Service.TimePickerDialog;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -138,6 +144,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nightModeFlags =
         this.getResources().getConfiguration().uiMode &
                 Configuration.UI_MODE_NIGHT_MASK;
+        setNotification();
+    }
+
+    private void setNotification() {
+
+        boolean notiMode = pref.getBoolean("notiMode", true);
+        if (notiMode){
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 19);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            NotificationService n = new NotificationService();
+            String[] content = n.getNotificationContent();
+            Intent intent1 = new Intent(MainActivity.this, ReminderBroadcast.class);
+            intent1.putExtra("title",content[0]);
+            intent1.putExtra("data",content[1]);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0,intent1, PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+            AlarmManager am = (AlarmManager) MainActivity.this.getSystemService(ALARM_SERVICE);
+            am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+
+
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("", MODE_PRIVATE);
+        /*SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("notiMode", true);
+        editor.apply();*/
+        }
+
     }
 
     private void setLanguage() {
@@ -240,7 +273,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         break;
                 }
                 break;
-            case R.id.language:
+            case R.id.notificationTime:
+                final TimePickerDialog dialog = new TimePickerDialog(this);
+                dialog.show();
                 break;
         }
         return true;
