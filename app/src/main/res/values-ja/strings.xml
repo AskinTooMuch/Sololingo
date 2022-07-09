@@ -78,4 +78,6 @@
     <string name="cancel">キャンセル</string>
     <string name="settings">設定</string>
     <string name="notifications">通知</string>
+    <string name="notification_set_confirm">通知時刻が正常に変更された</string>
+    <string name="notification_cancel_confirm">通知が正常に無効になった</string>
 </resources>

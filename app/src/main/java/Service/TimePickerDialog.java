@@ -15,8 +15,16 @@ import androidx.annotation.Nullable;
 
 import com.example.sololingo.R;
 
-public class TimePickerDialog extends Dialog{
+import java.sql.Time;
 
+public class TimePickerDialog extends Dialog{
+    public TimePickerDialog(Context context, TimePickerDialog.TimePickListener listener) {
+        super(context);
+        this.context = context;
+        this.timePickListener = listener;
+    }
+
+    private Context context;
     private TimePicker timePicker;
     private Button btnApply, btnCancel, btnDisableNotification;
 
@@ -38,6 +46,10 @@ public class TimePickerDialog extends Dialog{
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("notiMode", false);
         editor.apply();
+        if (timePickListener!=null){
+            timePickListener.onTimePicked(false);
+        }
+        this.dismiss();
     }
 
     private void cancelAction(View view) {
@@ -51,8 +63,15 @@ public class TimePickerDialog extends Dialog{
         editor.putInt("hour",timePicker.getHour());
         editor.putInt("minute",timePicker.getMinute());
         editor.apply();
+        if (timePickListener!=null){
+            timePickListener.onTimePicked(true);
+        }
         this.dismiss();
-        Log.d("12345", "applyData: "+pref.getInt("hour",100)+":"+pref.getInt("minute",100));
+    }
+
+    private TimePickListener timePickListener;
+    public interface TimePickListener {
+        void onTimePicked(boolean timePicked);
     }
 
     @Override

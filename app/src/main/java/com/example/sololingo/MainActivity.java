@@ -32,20 +32,12 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.mlkit.common.model.DownloadConditions;
-import com.google.mlkit.common.model.RemoteModelManager;
-import com.google.mlkit.nl.translate.TranslateLanguage;
-import com.google.mlkit.nl.translate.TranslateRemoteModel;
-import com.google.mlkit.nl.translate.Translation;
-import com.google.mlkit.nl.translate.Translator;
-import com.google.mlkit.nl.translate.TranslatorOptions;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Set;
-
-
 import java.util.Locale;
+
 import Adapter.TabAdapter;
 import Bean.User;
 import DAO.UserDAO;
@@ -53,7 +45,7 @@ import Service.NotificationService;
 import Service.ReminderBroadcast;
 import Service.TimePickerDialog;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final int REQUEST_PERMISSION_CODE = 1;
     private ViewPager pager;
@@ -61,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
-    private TextView tvNavHeaderName,tvNavHeaderEmail;
+    private TextView tvNavHeaderName, tvNavHeaderEmail;
     int nightModeFlags;
     SharedPreferences pref;
 
@@ -128,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /**
      * Overriding OnCreate method
+     *
      * @param savedInstanceState
      */
     @Override
@@ -142,37 +135,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setLanguage();
         pref = getApplicationContext().getSharedPreferences("Appearance", MODE_PRIVATE);
         nightModeFlags =
-        this.getResources().getConfiguration().uiMode &
-                Configuration.UI_MODE_NIGHT_MASK;
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
         setNotification();
     }
 
     private void setNotification() {
-
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("notification", MODE_PRIVATE);
         boolean notiMode = pref.getBoolean("notiMode", true);
-        if (notiMode){
+        if (notiMode) {
             Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, 19);
-            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.HOUR_OF_DAY, pref.getInt("hour", 19));
+            calendar.set(Calendar.MINUTE, pref.getInt("minute", 0));
             calendar.set(Calendar.SECOND, 0);
+            Log.d("12345", "setNotification: "+pref.getInt("hour", 19)+":"+pref.getInt("minute", 0));
             NotificationService n = new NotificationService();
             String[] content = n.getNotificationContent();
             Intent intent1 = new Intent(MainActivity.this, ReminderBroadcast.class);
-            intent1.putExtra("title",content[0]);
-            intent1.putExtra("data",content[1]);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0,intent1, PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+            intent1.putExtra("title", content[0]);
+            intent1.putExtra("data", content[1]);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,
+                    0, intent1,
+                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             AlarmManager am = (AlarmManager) MainActivity.this.getSystemService(ALARM_SERVICE);
             am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
-
-            SharedPreferences pref = getApplicationContext().getSharedPreferences("", MODE_PRIVATE);
         /*SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("notiMode", true);
         editor.apply();*/
+        } else {
+            AlarmManager alarmManager = (AlarmManager) MainActivity.this.getSystemService(ALARM_SERVICE);
+            Intent myIntent = new Intent(MainActivity.this, ReminderBroadcast.class);
+            myIntent.putExtra("title", "no");
+            myIntent.putExtra("data", "no");
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,
+                    0, myIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            alarmManager.cancel(pendingIntent);
+            Log.d("12345", "setNotification: cancelled");
         }
-
     }
 
+    //region set Languages
     private void setLanguage() {
         //Language
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -181,55 +184,64 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Spinner languageSelector = (Spinner) navigationView.getMenu().findItem(R.id.language).getActionView();
         languageSelector.setAdapter(adapter);
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Appearance", MODE_PRIVATE);
-        switch (pref.getString("curLanguage","en")){
-            case "vi": languageSelector.setSelection(0,false);
+        switch (pref.getString("curLanguage", "en")) {
+            case "vi":
+                languageSelector.setSelection(0, false);
                 break;
-            case "en": languageSelector.setSelection(1,false);
+            case "en":
+                languageSelector.setSelection(1, false);
                 break;
-            case "ja": languageSelector.setSelection(2,false);
+            case "ja":
+                languageSelector.setSelection(2, false);
                 break;
         }
         languageSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    SharedPreferences pref = getApplicationContext().getSharedPreferences("Appearance", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    switch (position){
-                        case 0: editor.putString("curLanguage","vi");
-                            editor.apply();
-                            Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(i1);
-                            //Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
-                            break;
-                        case 1: editor.putString("curLanguage","en");
-                            editor.apply();
-                            Intent i2 = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(i2);
-                            //Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
-                            break;
-                        case 2: editor.putString("curLanguage","ja");
-                            editor.apply();
-                            Intent i3 = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(i3);
-                            //Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
-                            break;
-                    }
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("Appearance", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                switch (position) {
+                    case 0:
+                        editor.putString("curLanguage", "vi");
+                        editor.apply();
+                        Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i1);
+                        //Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        editor.putString("curLanguage", "en");
+                        editor.apply();
+                        Intent i2 = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i2);
+                        //Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        editor.putString("curLanguage", "ja");
+                        editor.apply();
+                        Intent i3 = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i3);
+                        //Toast.makeText(MainActivity.this, R.string.restart_to_change, Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
     }
+    //endregion set Languages
 
     private void setTheme() {
         //Theme
         SharedPreferences pref = getApplicationContext().getSharedPreferences("Appearance", MODE_PRIVATE);
-        int theme = pref.getInt("theme",AppCompatDelegate.MODE_NIGHT_YES);
+        int theme = pref.getInt("theme", AppCompatDelegate.MODE_NIGHT_YES);
         AppCompatDelegate.setDefaultNightMode(theme);
     }
 
     /**
      * On select drawer navigation Items
+     *
      * @param item
      * @return
      */
@@ -252,7 +264,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent2.putExtra("topic_code","N5_moji");
                 intent2.putExtra("status",MockingTestActivity.TAKE_TEST_STATUS);
                 startActivity(intent2);*/
-                Intent intent2 = new Intent(this,SelectTestActivity.class);
+                Intent intent2 = new Intent(this, SelectTestActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.theme:
@@ -262,19 +274,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     case Configuration.UI_MODE_NIGHT_NO:
                         // Night mode is not active, we're using the light theme
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                        editor.putInt("theme",AppCompatDelegate.MODE_NIGHT_YES);
+                        editor.putInt("theme", AppCompatDelegate.MODE_NIGHT_YES);
                         editor.apply();
                         break;
                     case Configuration.UI_MODE_NIGHT_YES:
                         // Night mode is active, we're using dark theme
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                        editor.putInt("theme",AppCompatDelegate.MODE_NIGHT_NO);
+                        editor.putInt("theme", AppCompatDelegate.MODE_NIGHT_NO);
                         editor.apply();
                         break;
                 }
                 break;
             case R.id.notificationTime:
-                final TimePickerDialog dialog = new TimePickerDialog(this);
+                TimePickerDialog.TimePickListener listener = new TimePickerDialog.TimePickListener() {
+                    @Override
+                    public void onTimePicked(boolean timePicked) {
+                        setNotification();
+                        if (timePicked) {
+                            Toast.makeText(MainActivity.this, R.string.notification_set_confirm, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, R.string.notification_cancel_confirm, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                };
+                final TimePickerDialog dialog = new TimePickerDialog(this,listener);
                 dialog.show();
                 break;
         }
@@ -293,8 +316,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void attachBaseContext(Context newBase) {
         pref = newBase.getSharedPreferences("Appearance", MODE_PRIVATE);
-        String language = pref.getString("curLanguage","en");
-        Log.d("12345", "attachBaseContext: "+language);
+        String language = pref.getString("curLanguage", "en");
         Locale localeToSwitchTo = new Locale(language);
         ContextWrapper localeUpdatedContext = ContextUtils.updateLocale(newBase, localeToSwitchTo);
         super.attachBaseContext(localeUpdatedContext);

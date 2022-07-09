@@ -79,4 +79,6 @@
     <string name="cancel">Huỷ</string>
     <string name="settings">Cài đặt</string>
     <string name="notifications">Thông báo</string>
+    <string name="notification_set_confirm">Thay đổi thời gian thông báo thành công</string>
+    <string name="notification_cancel_confirm">Huỷ nhận thông báo thành công</string>
 </resources>

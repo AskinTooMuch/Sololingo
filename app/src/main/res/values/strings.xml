@@ -75,6 +75,8 @@
     <string name="cancel">Cancel</string>
     <string name="settings">Settings</string>
     <string name="notifications">Notifications</string>
+    <string name="notification_set_confirm">Notification time changed successfully</string>
+    <string name="notification_cancel_confirm">Notification disabled successfully</string>
 
 
     <string name="hint_subjectName">Subject Name</string>
