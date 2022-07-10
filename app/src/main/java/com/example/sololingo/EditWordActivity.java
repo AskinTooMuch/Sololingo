@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -51,21 +54,22 @@ public class EditWordActivity extends AppCompatActivity {
     private void updateWord(View view) {
         String mWord = edtWord.getText().toString();
         String def = edtWordDef.getText().toString();
-        Word newWord = new Word(word.getId(),word.getSubjectId(),mWord,def,"123");
-        myRef = database.getReference("word/"+word.getId());
-        myRef.setValue(newWord, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                Toast.makeText(EditWordActivity.this, getString(R.string.msg_updateWord), Toast.LENGTH_SHORT).show();
-            }
-        });
+        int id = word.getId();
+        int sId = word.getSubjectId();
+        Word newWord = new Word(id, sId, mWord, def, "123");
+
+        wordDAO.updateWord(newWord);
+        /*
+        myRef = database.getReference("word/" + id);
+        myRef.setValue(newWord);*/
         onBackPressed();
     }
 
     private void deleteWord(View view) {
-        myRef = database.getReference("word/"+word.getId());
-        myRef.removeValue();
-        Toast.makeText(EditWordActivity.this, getString(R.string.msg_deleteWordSuccess), Toast.LENGTH_SHORT).show();
+        wordDAO.deleteWord(word.getId());
+
+        /*myRef = database.getReference("word/" + word.getId());
+        myRef.removeValue();*/
         onBackPressed();
     }
 
@@ -75,5 +79,22 @@ public class EditWordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_word);
         bindingView();
         bindingAction();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_Home:
+                Intent intent = new Intent(EditWordActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

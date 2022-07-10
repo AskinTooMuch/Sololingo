@@ -25,27 +25,32 @@
             />
         <activity
             android:name=".LearnActivity"
+            android:theme="@style/Theme.myTheme"
             android:exported="false" />
         <activity
             android:name=".SelectTestActivity"
             android:exported="false" />
         <activity
             android:name=".AddWordActivity"
+            android:theme="@style/Theme.myTheme"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AddSubjectActivity"
+            android:theme="@style/Theme.myTheme"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".EditWordActivity"
+            android:theme="@style/Theme.myTheme"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".EditSubjectActivity"
+            android:theme="@style/Theme.myTheme"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
@@ -64,6 +69,7 @@
             android:exported="false" />
         <activity
             android:name=".ViewWordsActivity"
+            android:theme="@style/Theme.myTheme"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />

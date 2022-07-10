@@ -3,7 +3,7 @@ package Bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Subject implements Serializable{
+public class Subject implements Serializable {
     private int id;
     private String uId;
     private String name;

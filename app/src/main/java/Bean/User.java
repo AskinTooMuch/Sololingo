@@ -42,7 +42,7 @@ public class User {
         this.dob = dob;
     }
 
-    public Date getStringDOB(){
+    public Date getStringDOB() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/MM/yyyy");
         Date result = null;
         try {
@@ -53,7 +53,7 @@ public class User {
         return result;
     }
 
-    public String getUserPath(){
+    public String getUserPath() {
         return this.getEmail().replace('.', '_')
                 .replace('#', '_')
                 .replace('$', '_')

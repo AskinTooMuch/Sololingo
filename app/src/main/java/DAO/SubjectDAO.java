@@ -6,9 +6,12 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,16 +28,18 @@ public class SubjectDAO {
     private DatabaseReference myRef;
     private SharedPreferences sharedPref;
 
-    public void addSubject(Subject subject){
+    public void addSubject(Subject subject) {
+        database = FirebaseDatabase.getInstance();
         myRef = database.getReference("subject");
         myRef.child(String.valueOf(subject.getId())).setValue(subject);
     }
 
-    public void getSubjectList(SubjectDAO.FirebaseCallBack firebaseCallBack){
+    public void getSubjectList(SubjectDAO.FirebaseCallBack firebaseCallBack) {
 
-        String uId = "vvduong108@gmail.com";
-
-        database= FirebaseDatabase.getInstance();
+        //String uId = "vvduong108@gmail.com";
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String uId = firebaseUser.getEmail();
+        database = FirebaseDatabase.getInstance();
         myRef = database.getReference("subject");
         /*myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -57,25 +62,35 @@ public class SubjectDAO {
         myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     DataSnapshot dataSnapshot = task.getResult();
                     ArrayList<Subject> subjectList = new ArrayList<>();
                     ArrayList<Subject> subjectListFull = new ArrayList<>();
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Subject subject = (Subject) snapshot.getValue(Subject.class);
-                        Log.d("duong",subject.getName());
+                        Log.d("duong", subject.getName());
                         subjectListFull.add(subject);
                         if (subject.getuId().equalsIgnoreCase(uId)) {
                             subjectList.add(subject);
                         }
                     }
-                    Log.d("duong",subjectListFull.size()+"");
+                    Log.d("duong", subjectListFull.size() + "");
                     firebaseCallBack.onCallBack(subjectList, subjectListFull);
                 }
             }
         });
-
     }
+
+    public void updateSubjectName(int id, String newName) {
+        myRef = database.getReference("subject/" + id + "/name");
+        myRef.setValue(newName);
+    }
+
+    public void deleteSubject(int id) {
+        myRef = database.getReference("subject/" + id);
+        myRef.removeValue();
+    }
+
     public interface FirebaseCallBack {
         void onCallBack(ArrayList<Subject> sList, ArrayList<Subject> sListFull);
     }

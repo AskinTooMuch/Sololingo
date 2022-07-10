@@ -16,7 +16,7 @@
     <string name="back">Trở lại</string>
     <string name="delete">Xoá</string>
     <string name="date">Ngày</string>
-    <string name="yourSubject">(Các) môn học</string>
+    <string name="yourSubject">(Các) chủ đề</string>
     <string name="darkTheme">Thay đổi chủ đề</string>
     <string name="displayLanguage">Ngôn ngữ</string>
     <string name="appearance">Giao diện</string>
@@ -61,15 +61,16 @@
     <string name="Mocking_Test">Thi thử</string>
 
 
-    <string name="hint_subjectName">Subject Name</string>
-    <string name="hint_Word">Word</string>
-    <string name="hint_WordDefinition">Word Definition</string>
-    <string name="msg_confirmDeleteSubject">Delete a Subject also delete all words in it. Confirm to delete this Subject?</string>
-    <string name="msg_confirmDeleteWord">Confirm to delete this Word?</string>
-    <string name="msg_updateSubject">Update Subject success</string>
-    <string name="msg_updateWord">Update Word success</string>
-    <string name="msg_deleteSubjectSuccess">Delete Word success</string>
-    <string name="msg_deleteWordSuccess">Delete Word success</string>
+    <string name="hint_subjectName">Tên chủ đề</string>
+    <string name="hint_Word">Từ vựng</string>
+    <string name="hint_WordDefinition">Định nghĩa</string>
+    <string name="msg_confirmDeleteSubject">Xóa một chủ đề cũng xóa toàn bộ từ vựng trong đó. Xác nhận xóa chủ đề?</string>
+    <string name="msg_confirmDeleteWord">Xác nhận xóa từ</string>
+    <string name="msg_updateSubject">Cập nhật chủ đề thành công</string>
+    <string name="msg_updateWord">Cập nhật từ vựng thành công</string>
+    <string name="msg_deleteSubjectSuccess">Xóa chủ đề thành công</string>
+    <string name="msg_deleteWordSuccess">Xóa từ vựng thành công</string>
+    <string name="msg_listWordEmpty">Bạn đang không có từ vựng nào, hãy thêm từ vựng sau đó bắt đầu học</string>
     <string name="home">Trang chủ</string>
     <string name="vocabulary">Từ vựng</string>
     <string name="reading">Đọc</string>

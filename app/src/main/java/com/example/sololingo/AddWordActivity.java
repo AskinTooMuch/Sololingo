@@ -1,10 +1,14 @@
 package com.example.sololingo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -36,19 +40,20 @@ public class AddWordActivity extends AppCompatActivity {
         vCheck.setOnClickListener(this::addWord);
     }
 
-    public Word getWord(){
+    public Word getWord() {
         Intent intent = getIntent();
         subject = (Subject) intent.getSerializableExtra("subject");
-        int id = intent.getIntExtra("nextId",0);
+        int id = intent.getIntExtra("nextId", 0);
         String word = edtWord.getText().toString();
         String wordDef = edtWordDef.getText().toString();
-        return new Word(id,subject.getId(),word,wordDef,"123");
+        return new Word(id, subject.getId(), word, wordDef, "123");
     }
 
     public void addWord(View view) {
         Word word = getWord();
-        myRef = database.getReference("word");
-        myRef.child(String.valueOf(word.getId())).setValue(word);
+        /*myRef = database.getReference("word");
+        myRef.child(String.valueOf(word.getId())).setValue(word);*/
+        wordDAO.addWord(word);
         finish();
     }
 
@@ -58,5 +63,22 @@ public class AddWordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_word);
         bidingView();
         bindingAction();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_Home:
+                Intent intent = new Intent(AddWordActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

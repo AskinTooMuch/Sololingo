@@ -12,7 +12,7 @@ import com.example.sololingo.FragmentMemo;
 import com.example.sololingo.FragmentTranslate;
 import com.example.sololingo.R;
 
-public class TabAdapter  extends FragmentStatePagerAdapter {
+public class TabAdapter extends FragmentStatePagerAdapter {
     Context context;
 
     public TabAdapter(@NonNull FragmentManager fm, int behavior, Context nContext) {
@@ -23,8 +23,8 @@ public class TabAdapter  extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Fragment frag=null;
-        switch (position){
+        Fragment frag = null;
+        switch (position) {
             case 0:
                 frag = new FragmentTranslate();
                 break;
@@ -46,7 +46,7 @@ public class TabAdapter  extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         String title = "";
-        switch (position){
+        switch (position) {
             case 0:
                 title = context.getString(R.string.tabTranslate);
                 break;

@@ -48,7 +48,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         int mSubjectId = mWordList.get(position).getSubjectId();
         String image = mWordList.get(position).getImage();
 
-        holder.word= new Word(mWordId,mSubjectId,mWord,mWordDef,image);
+        holder.word = new Word(mWordId, mSubjectId, mWord, mWordDef, image);
         // Add the data to the view
         holder.wordItem.setText(mWord);
         holder.wordItemDef.setText(mWordDef);
@@ -77,7 +77,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, EditWordActivity.class);
-            intent.putExtra("word",word);
+            intent.putExtra("word", word);
             context.startActivity(intent);
         }
     }

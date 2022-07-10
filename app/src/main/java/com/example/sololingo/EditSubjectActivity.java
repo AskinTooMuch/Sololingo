@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -45,19 +48,19 @@ public class EditSubjectActivity extends AppCompatActivity {
     private void editSubject(View view) {
         int id = subject.getId();
         String newName = edtSubjectName.getText().toString();
+        subjectDAO.updateSubjectName(id, newName);
 
-        myRef = database.getReference("subject/" + id + "/name");
+        /*myRef = database.getReference("subject/" + id + "/name");
         myRef.setValue(newName, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                 Toast.makeText(EditSubjectActivity.this, getString(R.string.msg_updateSubject), Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         Intent intent = new Intent(EditSubjectActivity.this, ViewWordsActivity.class);
         subject.setName(newName);
         intent.putExtra("subject", subject);
         startActivity(intent);
-
     }
 
     @Override
@@ -66,5 +69,21 @@ public class EditSubjectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_subject);
         bindingView();
         bindingAction();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_Home:
+                Intent intent = new Intent(EditSubjectActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

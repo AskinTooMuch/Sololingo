@@ -14,6 +14,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,8 @@ import Adapter.SubjectListAdapter;
 import Adapter.WordListAdapter;
 import Bean.Subject;
 import Bean.Word;
+import DAO.SubjectDAO;
+import DAO.WordDAO;
 
 public class ViewWordsActivity extends AppCompatActivity {
     private FirebaseDatabase database;
@@ -37,6 +42,9 @@ public class ViewWordsActivity extends AppCompatActivity {
     private ArrayList<Word> wordList = new ArrayList<>();
 
     private ArrayList<Word> wordListFull = new ArrayList<>();
+
+    private SubjectDAO subjectDAO = new SubjectDAO();
+    private WordDAO wordDAO = new WordDAO();
     private WordListAdapter mWordListAdapter;
     private RecyclerView rcvItems;
     private TextView tvSubject;
@@ -66,14 +74,32 @@ public class ViewWordsActivity extends AppCompatActivity {
     }
 
     private void learn(View view) {
-        Intent intent = new Intent(ViewWordsActivity.this, LearnActivity.class);
-        intent.putExtra("subject",subject);
-        startActivity(intent);
+        if (wordList.size()==0){
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setIcon(getDrawable(R.drawable.sologo))
+                    .setTitle(getString(R.string.app_name))
+                    .setMessage(getString(R.string.msg_listWordEmpty))
+                    .setCancelable(true)
+                    .setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        } else {
+            Intent intent = new Intent(ViewWordsActivity.this, LearnActivity.class);
+            intent.putExtra("subject", subject);
+            startActivity(intent);
+        }
+
     }
 
     private void editSubject(View view) {
         Intent intent = new Intent(ViewWordsActivity.this, EditSubjectActivity.class);
-        intent.putExtra("subject",subject);
+        intent.putExtra("subject", subject);
         startActivity(intent);
     }
 
@@ -87,11 +113,13 @@ public class ViewWordsActivity extends AppCompatActivity {
                         "Yes",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                myRef = database.getReference("subject/" + subject.getId());
-                                myRef.removeValue();
-                                for (Word word : wordList){
-                                    myRef = database.getReference("word/" + word.getId());
-                                    myRef.removeValue();
+                                subjectDAO.deleteSubject(subject.getId());
+                                /*myRef = database.getReference("subject/" + subject.getId());
+                                myRef.removeValue();*/
+                                for (Word word : wordList) {
+                                    wordDAO.deleteWord(word.getId());
+                                    /*myRef = database.getReference("word/" + word.getId());
+                                    myRef.removeValue();*/
                                     Toast.makeText(ViewWordsActivity.this, getString(R.string.msg_deleteSubjectSuccess), Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
@@ -174,4 +202,20 @@ public class ViewWordsActivity extends AppCompatActivity {
         inflateWordsList();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_Home:
+                Intent intent = new Intent(ViewWordsActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

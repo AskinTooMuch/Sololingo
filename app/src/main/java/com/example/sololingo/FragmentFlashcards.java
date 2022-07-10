@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -75,7 +77,9 @@ public class FragmentFlashcards extends Fragment {
 
     private void getSubjectList() {
 
-        String uId = "vvduong108@gmail.com";
+        //String uId = "vvduong108@gmail.com";
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String uId = firebaseUser.getEmail();
         myRef = database.getReference("subject");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override

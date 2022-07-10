@@ -60,15 +60,16 @@
     <string name="User_profile">プロファイル</string>
     <string name="Mocking_Test">モックテスト</string>
 
-    <string name="hint_subjectName">Subject Name</string>
-    <string name="hint_Word">Word</string>
-    <string name="hint_WordDefinition">Word Definition</string>
-    <string name="msg_confirmDeleteSubject">Delete a Subject also delete all words in it. Confirm to delete this Subject?</string>
-    <string name="msg_confirmDeleteWord">Confirm to delete this Word?</string>
-    <string name="msg_updateSubject">Update Subject success</string>
-    <string name="msg_updateWord">Update Word success</string>
-    <string name="msg_deleteSubjectSuccess">Delete Word success</string>
-    <string name="msg_deleteWordSuccess">Delete Word success</string>
+    <string name="hint_subjectName">件名</string>
+    <string name="hint_Word">言葉</string>
+    <string name="hint_WordDefinition">定義</string>
+    <string name="msg_confirmDeleteSubject">件名を削除すると、その中のすべての単語も削除されます。 この件名を削除することを確認しますか？</string>
+    <string name="msg_confirmDeleteWord">この定義を削除することを確認しますか？</string>
+    <string name="msg_updateSubject">件名を正常に更新する</string>
+    <string name="msg_updateWord">定義を正常に更新する</string>
+    <string name="msg_deleteSubjectSuccess">件名を正常に削除する</string>
+    <string name="msg_deleteWordSuccess">言葉を正常に削除する</string>
+    <string name="msg_listWordEmpty">定義リストは空です、いくつかの単語を挿入して、学習を始めてみてください！</string>
     <string name="home">ホーム</string>
     <string name="vocabulary">単語</string>
     <string name="reading">読む</string>

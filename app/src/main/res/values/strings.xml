@@ -87,10 +87,11 @@
     <string name="hint_WordDefinition">Word Definition</string>
     <string name="msg_confirmDeleteSubject">Delete a Subject also delete all words in it. Confirm to delete this Subject?</string>
     <string name="msg_confirmDeleteWord">Confirm to delete this Word?</string>
-    <string name="msg_updateSubject">Update Subject success</string>
-    <string name="msg_updateWord">Update Word success</string>
-    <string name="msg_deleteSubjectSuccess">Delete Word success</string>
-    <string name="msg_deleteWordSuccess">Delete Word success</string>
+    <string name="msg_updateSubject">Update Subject successfully</string>
+    <string name="msg_updateWord">Update Word successfully</string>
+    <string name="msg_deleteSubjectSuccess">Delete Subject successfully</string>
+    <string name="msg_deleteWordSuccess">Delete Word successfully</string>
+    <string name="msg_listWordEmpty">Your words list is empty, try to insert some words and start learning!</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

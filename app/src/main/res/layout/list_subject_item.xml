@@ -12,8 +12,8 @@
         android:layout_height="75dp"
         android:gravity="center_vertical"
         android:paddingLeft="30dp"
-        android:text="TextView"
         android:textAllCaps="true"
+        android:textColor="?attr/colorOnBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

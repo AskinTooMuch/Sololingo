@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -59,7 +62,7 @@ public class LearnActivity extends AppCompatActivity {
     }
 
     private void moveRight(View view) {
-        if (subject.getCurProgress() < wordList.size()-1) {
+        if (subject.getCurProgress() < wordList.size() - 1) {
             Log.d("duong", "after right" + subject.getCurProgress());
             Log.d("duong", "word" + position + wordList.get(subject.getCurProgress()).getWord());
 
@@ -137,5 +140,21 @@ public class LearnActivity extends AppCompatActivity {
         setContentView(R.layout.activity_learn);
         bindingView();
         bindingAction();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_Home:
+                Intent intent = new Intent(LearnActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

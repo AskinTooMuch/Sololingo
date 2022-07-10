@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="75dp">
 
     <TextView
         android:id="@+id/tvWord"
-        android:layout_width="119dp"
+        android:layout_width="115dp"
         android:layout_height="70dp"
-        android:background="@color/white"
         android:gravity="center"
-        android:text="Word"
+        android:textColor="?attr/colorOnBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,12 +18,12 @@
 
     <TextView
         android:id="@+id/tvWordDef"
-        android:layout_width="292dp"
+        android:layout_width="285dp"
         android:layout_height="70dp"
-        android:background="@color/white"
         android:gravity="center"
-        android:text="Def"
+        android:textColor="?attr/colorOnBackground"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tvWord"
         app:layout_constraintTop_toTopOf="parent" />
 

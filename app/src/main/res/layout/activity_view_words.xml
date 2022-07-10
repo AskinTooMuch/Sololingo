@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewWordsActivity">
+    tools:context=".ViewWordsActivity"
+    android:background="?android:attr/colorBackground">
 
     <TextView
         android:id="@+id/tvSubject"
         android:layout_width="193dp"
         android:layout_height="98dp"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:textAllCaps="true"
+        android:textSize="25sp"
+        android:text="Woed"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,10 +24,10 @@
         android:id="@+id/vAddWord"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/ic_action_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,10 +35,10 @@
         android:id="@+id/vEdit"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/ic_action_edit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,10 +46,10 @@
         android:id="@+id/vDelete"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/ic_action_delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,21 +57,23 @@
         android:id="@+id/vLearn"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginTop="108dp"
-        android:background="@drawable/ic_action_learn"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/ic_baseline_lightbulb_circle_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvList"
-        android:layout_width="413dp"
-        android:layout_height="576dp"
+        android:layout_width="match_parent"
+        android:layout_height="514dp"
+        android:background="?attr/colorBackgroundFloating"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
