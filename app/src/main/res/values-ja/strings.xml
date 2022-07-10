@@ -53,7 +53,7 @@
     <string name="Log_out">ログアウト</string>
     <string name="Next">次へ</string>
     <string name="Submit">送信</string>
-    <string name="Finish_Review">レビューを終了する</string>
+    <string name="Finish_Review">終了</string>
     <string name="default_answer">デフォルトの回答</string>
     <string name="default_name">デフォルトの名</string>
     <string name="default_email">defaul@gmail.com</string>
@@ -80,4 +80,7 @@
     <string name="notifications">通知</string>
     <string name="notification_set_confirm">通知時刻が正常に変更された</string>
     <string name="notification_cancel_confirm">通知が正常に無効になった</string>
+    <string name="mark">マーク</string>
+    <string name="submit">送信</string>
+    <string name="Function_upcoming">今後の機能</string>
 </resources>

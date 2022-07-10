@@ -15,6 +15,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 import Bean.Question;
 import DAO.QuestionDAO;
 
@@ -151,19 +153,24 @@ public class MockingTestFragment extends Fragment {
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
             radioGroup.getChildAt(i).setClickable(false);
         }
+        int redAnswerColor = Color.rgb(255,153,153);
+        int greenAnswerColor = Color.rgb(102,255,102);
+        int orangeAnswerColor = Color.rgb(255,153,51);
+        int resultAnswerColor = greenAnswerColor;
         int chosenAnswer = question.getChosenAnswer();
         switch (chosenAnswer){
-            case 1:answer1.setBackgroundColor(R.color.red_error);break;
-            case 2:answer2.setBackgroundColor(R.color.red_error);break;
-            case 3:answer3.setBackgroundColor(R.color.red_error);break;
-            case 4:answer4.setBackgroundColor(R.color.red_error);break;
+            case 1:answer1.setBackgroundColor(redAnswerColor);break;
+            case 2:answer2.setBackgroundColor(redAnswerColor);break;
+            case 3:answer3.setBackgroundColor(redAnswerColor);break;
+            case 4:answer4.setBackgroundColor(redAnswerColor);break;
+            default: resultAnswerColor = orangeAnswerColor;break;
         }
         int rightAnswer = question.getRightAnswer();
         switch (rightAnswer){
-            case 1:answer1.setBackgroundColor(R.color.green);break;
-            case 2:answer2.setBackgroundColor(R.color.green);break;
-            case 3:answer3.setBackgroundColor(R.color.green);break;
-            case 4:answer4.setBackgroundColor(R.color.green);break;
+            case 1:answer1.setBackgroundColor(resultAnswerColor);break;
+            case 2:answer2.setBackgroundColor(resultAnswerColor);break;
+            case 3:answer3.setBackgroundColor(resultAnswerColor);break;
+            case 4:answer4.setBackgroundColor(resultAnswerColor);break;
         }
     }
 

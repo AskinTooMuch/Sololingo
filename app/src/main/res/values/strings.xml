@@ -45,6 +45,9 @@
     <string name="N3" translatable="false">N3</string>
     <string name="N2" translatable="false">N2</string>
     <string name="N1" translatable="false">N1</string>
+    <string name="mark">Mark</string>
+    <string name="submit">Submit</string>
+    <string name="Function_upcoming">Function upcoming</string>
     <!--Resource string English-en <string name=""></string>-->
     <string name="textTranslate">Enter text</string>
     <string name="tabTranslate">"Translate"</string>

@@ -53,7 +53,7 @@
     <string name="Log_out">Đăng xuất</string>
     <string name="Next">Tiếp theo</string>
     <string name="Submit">Hoàn tất</string>
-    <string name="Finish_Review">Hoàn tất kiểm tra</string>
+    <string name="Finish_Review">Hoàn tất</string>
     <string name="default_answer">Câu trả lời mặc định</string>
     <string name="default_name">Tên mặc định</string>
     <string name="default_email">defaul@gmail.com</string>
@@ -81,4 +81,7 @@
     <string name="notifications">Thông báo</string>
     <string name="notification_set_confirm">Thay đổi thời gian thông báo thành công</string>
     <string name="notification_cancel_confirm">Huỷ nhận thông báo thành công</string>
+    <string name="mark">Điểm</string>
+    <string name="submit">Nộp</string>
+    <string name="Function_upcoming">Chức năng sắp ra mắt</string>
 </resources>

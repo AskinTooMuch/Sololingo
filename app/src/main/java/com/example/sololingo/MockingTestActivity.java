@@ -1,6 +1,5 @@
 package com.example.sololingo;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -10,18 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -33,18 +27,19 @@ public class MockingTestActivity extends AppCompatActivity {
 
     public static final String TAKE_TEST_STATUS = "takeTest";
     public static final String REVIEW_TEST_STATUS = "reviewTest";
-    private TextView tvBack, tvCurrentQuestion, tvTotalQuestion, tvNext, tvSubmit, tvFinishReview;
+    private TextView tvCurrentQuestion, tvTotalQuestion, tvSubmit, tvFinishReview;
     private ViewPager viewPager;
     private Toolbar toolbar;
     private MockingTestAdapter mockingTestAdapter;
     private ArrayList<Question> listQuestions = new ArrayList<>();
     private String topicCode, status, answerSheetId;
+    private ImageView ivBack, ivNext;
 
     private void bindingView() {
-        tvBack = findViewById(R.id.tvBack);
+        ivBack = findViewById(R.id.tvBack);
         tvCurrentQuestion = findViewById(R.id.tvCurrentQuestion);
         tvTotalQuestion = findViewById(R.id.tvTotalQuestion);
-        tvNext = findViewById(R.id.tvNext);
+        ivNext = findViewById(R.id.tvNext);
         viewPager = findViewById(R.id.mocking_view_pager);
         tvSubmit = findViewById(R.id.tvSubmit);
         tvFinishReview = findViewById(R.id.tvFinishReview);
@@ -54,8 +49,8 @@ public class MockingTestActivity extends AppCompatActivity {
     private void bindingAction() {
         initIntent();
         getListQuestion();
-        tvBack.setOnClickListener(this::onBackClick);
-        tvNext.setOnClickListener(this::onNextClick);
+        ivBack.setOnClickListener(this::onBackClick);
+        ivNext.setOnClickListener(this::onNextClick);
         tvSubmit.setOnClickListener(this::onSubmitClick);
         tvFinishReview.setOnClickListener(this::onFinishReviewClick);
     }
@@ -124,13 +119,13 @@ public class MockingTestActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 tvCurrentQuestion.setText(String.valueOf(position + 1));
                 if (position == 0) {
-                    tvBack.setVisibility(View.GONE);
-                    tvNext.setVisibility(View.VISIBLE);
+                    ivBack.setVisibility(View.GONE);
+                    ivNext.setVisibility(View.VISIBLE);
                     tvSubmit.setVisibility(View.GONE);
                     tvFinishReview.setVisibility(View.GONE);
                 } else if (position == (listQuestions.size() - 1)) {
-                    tvBack.setVisibility(View.VISIBLE);
-                    tvNext.setVisibility(View.GONE);
+                    ivBack.setVisibility(View.VISIBLE);
+                    ivNext.setVisibility(View.GONE);
                     if (status.equalsIgnoreCase(REVIEW_TEST_STATUS)) {
                         tvSubmit.setVisibility(View.GONE);
                         tvFinishReview.setVisibility(View.VISIBLE);
@@ -139,8 +134,8 @@ public class MockingTestActivity extends AppCompatActivity {
                         tvSubmit.setVisibility(View.VISIBLE);
                     }
                 } else {
-                    tvBack.setVisibility(View.VISIBLE);
-                    tvNext.setVisibility(View.VISIBLE);
+                    ivBack.setVisibility(View.VISIBLE);
+                    ivNext.setVisibility(View.VISIBLE);
                     tvSubmit.setVisibility(View.GONE);
                     tvFinishReview.setVisibility(View.GONE);
                 }

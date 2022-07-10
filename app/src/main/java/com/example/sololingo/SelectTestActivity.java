@@ -73,46 +73,65 @@ public class SelectTestActivity extends AppCompatActivity implements NavigationV
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Intent intent = new Intent(getApplicationContext(), MockingTestActivity.class);
-                Toast.makeText(getApplicationContext(),"onChildClick",Toast.LENGTH_SHORT).show();
+                Boolean check = true;
                 switch (groupPosition){
                     case 0:
                         switch (childPosition){
                             case 0:intent.putExtra("topic_code", "N1_0");break;
                             case 1:intent.putExtra("topic_code", "N1_1");break;
-                            case 2:intent.putExtra("topic_code", "N1_2");break;
+                            case 2:
+                                check = false;
+                                Toast.makeText(getApplicationContext(),R.string.Function_upcoming,Toast.LENGTH_SHORT).show();
+                                break;
                         }
                         break;
                     case 1:
                         switch (childPosition){
                             case 0:intent.putExtra("topic_code", "N2_0");break;
                             case 1:intent.putExtra("topic_code", "N2_1");break;
-                            case 2:intent.putExtra("topic_code", "N2_2");break;
+                            case 2:
+                                check = false;
+                                Toast.makeText(getApplicationContext(),R.string.Function_upcoming,Toast.LENGTH_SHORT).show();
+                                break;
                         }
                         break;
                     case 2:
                         switch (childPosition){
                             case 0:intent.putExtra("topic_code", "N3_0");break;
                             case 1:intent.putExtra("topic_code", "N3_1");break;
-                            case 2:intent.putExtra("topic_code", "N3_2");break;
+                            case 2:
+                                check = false;
+                                Toast.makeText(getApplicationContext(),R.string.Function_upcoming,Toast.LENGTH_SHORT).show();
+                                break;
                         }
                         break;
                     case 3:
                         switch (childPosition){
                             case 0:intent.putExtra("topic_code", "N4_0");break;
                             case 1:intent.putExtra("topic_code", "N4_1");break;
-                            case 2:intent.putExtra("topic_code", "N4_2");break;
+                            case 2:
+                                check = false;
+                                Toast.makeText(getApplicationContext(),R.string.Function_upcoming,Toast.LENGTH_SHORT).show();
+                                break;
                         }
                         break;
                     case 4:
                         switch (childPosition){
                             case 0:intent.putExtra("topic_code", "N5_0");break;
                             case 1:intent.putExtra("topic_code", "N5_1");break;
-                            case 2:intent.putExtra("topic_code", "N5_2");break;
+                            case 2:
+                                check = false;
+                                Toast.makeText(getApplicationContext(),R.string.Function_upcoming,Toast.LENGTH_SHORT).show();
+                                break;
                         }
                         break;
                 }
-                intent.putExtra("status", MockingTestActivity.TAKE_TEST_STATUS);
-                startActivity(intent);
+                if (check){
+                    intent.putExtra("status", MockingTestActivity.TAKE_TEST_STATUS);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(),R.string.Function_upcoming,Toast.LENGTH_SHORT).show();
+                }
                 return true;
             }
         });

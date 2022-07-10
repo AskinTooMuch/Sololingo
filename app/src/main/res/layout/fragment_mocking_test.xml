@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:layout_marginBottom="0dp"
+    android:background="@color/white"
     tools:context=".MockingTestFragment">
 
 
@@ -13,21 +14,27 @@
         android:id="@+id/tvQuestion"
         android:layout_width="match_parent"
         android:layout_height="385dp"
+        android:gravity="center_vertical"
         android:text="@string/Mocking_Test"
+        android:textColor="@color/black"
         android:textSize="20sp" />
+
     <RadioGroup
+        android:textColor="@color/black"
         android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
         <RadioButton
+            android:textColor="@color/black"
             android:id="@+id/answer1"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:text="@string/default_answer"
             android:textSize="18sp" />
         <RadioButton
+            android:textColor="@color/black"
             android:id="@+id/answer2"
             android:layout_width="match_parent"
             android:layout_height="75dp"
@@ -35,6 +42,7 @@
             android:textSize="18sp" />
 
         <RadioButton
+            android:textColor="@color/black"
             android:id="@+id/answer3"
             android:layout_width="match_parent"
             android:layout_height="75dp"
@@ -42,6 +50,7 @@
             android:textSize="18sp"  />
 
         <RadioButton
+            android:textColor="@color/black"
             android:id="@+id/answer4"
             android:layout_width="match_parent"
             android:layout_height="75dp"
