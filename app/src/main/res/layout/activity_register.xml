@@ -31,11 +31,11 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="0dp"
-                android:fontFamily="@font/helo"
+                android:fontFamily="@font/pacifico"
                 android:includeFontPadding="false"
                 android:text="@string/Register"
                 android:textColor="#FDFDFD"
-                android:textSize="60sp"
+                android:textSize="46sp"
                 tools:layout_editor_absoluteX="136dp"
                 tools:layout_editor_absoluteY="43dp" />
 
