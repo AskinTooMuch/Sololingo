@@ -20,11 +20,13 @@ public class WordDAO {
     }
 
     public void updateWord(Word word) {
+        database = FirebaseDatabase.getInstance();
         myRef = database.getReference("word/" + word.getId());
         myRef.setValue(word);
     }
 
     public void deleteWord(int id) {
+        database = FirebaseDatabase.getInstance();
         myRef = database.getReference("word/" + id);
         myRef.removeValue();
     }

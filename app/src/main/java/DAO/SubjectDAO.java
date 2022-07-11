@@ -60,11 +60,13 @@ public class SubjectDAO {
     }
 
     public void updateSubjectName(int id, String newName) {
+        database = FirebaseDatabase.getInstance();
         myRef = database.getReference("subject/" + id + "/name");
         myRef.setValue(newName);
     }
 
     public void deleteSubject(int id) {
+        database = FirebaseDatabase.getInstance();
         myRef = database.getReference("subject/" + id);
         myRef.removeValue();
     }

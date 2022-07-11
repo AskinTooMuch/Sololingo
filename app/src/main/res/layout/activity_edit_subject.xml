@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="148dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:singleLine="false"
         android:hint="@string/hint_subjectName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
