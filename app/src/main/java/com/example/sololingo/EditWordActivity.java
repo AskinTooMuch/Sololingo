@@ -29,12 +29,11 @@ public class EditWordActivity extends AppCompatActivity {
 
     private EditText edtWord, edtWordDef;
     private View vCheck, vDelete;
-    private WordDAO wordDAO;
+    private WordDAO wordDAO= new WordDAO();
     private Word word;
     private Intent receiveIntent;
 
     public void bindingView() {
-        wordDAO = new WordDAO();
         edtWord = findViewById(R.id.edtWord);
         edtWordDef = findViewById(R.id.edtWordDef);
         vCheck = findViewById(R.id.vCheck);
@@ -56,20 +55,13 @@ public class EditWordActivity extends AppCompatActivity {
         String def = edtWordDef.getText().toString();
         int id = word.getId();
         int sId = word.getSubjectId();
-        Word newWord = new Word(id, sId, mWord, def, "123");
-
+        Word newWord = new Word(id, sId, mWord, def);
         wordDAO.updateWord(newWord);
-        /*
-        myRef = database.getReference("word/" + id);
-        myRef.setValue(newWord);*/
         onBackPressed();
     }
 
     private void deleteWord(View view) {
         wordDAO.deleteWord(word.getId());
-
-        /*myRef = database.getReference("word/" + word.getId());
-        myRef.removeValue();*/
         onBackPressed();
     }
 

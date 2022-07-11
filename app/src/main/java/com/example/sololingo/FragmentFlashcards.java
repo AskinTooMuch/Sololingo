@@ -39,10 +39,10 @@ public class FragmentFlashcards extends Fragment {
     private RecyclerView rcvItems;
     private SubjectListAdapter mSubjectListAdapter;
     private View vAddSubject;
-    private SubjectDAO subjectDAO;
+    private SubjectDAO subjectDAO = new SubjectDAO();
+    ;
 
     private void bindingView(View view) {
-        subjectDAO = new SubjectDAO();
         rcvItems = view.findViewById(R.id.rcvList);
         vAddSubject = view.findViewById(R.id.vAddSubject);
         database = FirebaseDatabase.getInstance();
@@ -76,8 +76,6 @@ public class FragmentFlashcards extends Fragment {
     }
 
     private void getSubjectList() {
-
-        //String uId = "vvduong108@gmail.com";
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String uId = firebaseUser.getEmail();
         myRef = database.getReference("subject");
@@ -117,7 +115,6 @@ public class FragmentFlashcards extends Fragment {
         View mView = inflater.inflate(R.layout.fragment_flashcards, container, false);
         bindingView(mView);
         bindingAction(mView);
-        //getSubjectList();
         inflateSubjectList();
         return mView;
     }

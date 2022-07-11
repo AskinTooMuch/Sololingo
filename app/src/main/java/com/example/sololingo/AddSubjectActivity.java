@@ -26,10 +26,9 @@ public class AddSubjectActivity extends AppCompatActivity {
     private SharedPreferences sharedPref;
     private EditText edtSubjectName;
     private View vCheck;
-    private SubjectDAO subjectDAO;
+    private SubjectDAO subjectDAO= new SubjectDAO();
 
     private void bindingView() {
-        subjectDAO = new SubjectDAO();
         edtSubjectName = findViewById(R.id.edtSubjectName);
         vCheck = findViewById(R.id.vCheck);
         database = FirebaseDatabase.getInstance();
@@ -42,12 +41,6 @@ public class AddSubjectActivity extends AppCompatActivity {
     private Subject getSubject() {
         Intent intent = getIntent();
         int id = intent.getIntExtra("nextId", 0);
-        /*
-        sharedPref = getApplicationContext().getSharedPreferences("LoginInformation",this.MODE_PRIVATE);
-        String email = sharedPref.getString("email","");
-        */
-
-        //String uId = "vvduong108@gmail.com";
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String uId = firebaseUser.getEmail();
         String name = edtSubjectName.getText().toString();
@@ -57,10 +50,6 @@ public class AddSubjectActivity extends AppCompatActivity {
     private void addSubject(View view) {
         Subject s = getSubject();
         subjectDAO.addSubject(s);
-        /*
-        myRef = database.getReference("subject");
-        myRef.child(String.valueOf(s.getId())).setValue(s);
-         */
         finish();
     }
 

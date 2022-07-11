@@ -7,17 +7,15 @@ public class Word implements Serializable {
     private int subjectId;
     private String word;
     private String definition;
-    private String image;
 
     public Word() {
     }
 
-    public Word(int id, int subjectId, String word, String definition, String image) {
+    public Word(int id, int subjectId, String word, String definition) {
         this.id = id;
         this.subjectId = subjectId;
         this.word = word;
         this.definition = definition;
-        this.image = image;
     }
 
     public int getId() {
@@ -50,13 +48,5 @@ public class Word implements Serializable {
 
     public void setDefinition(String definition) {
         this.definition = definition;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 }

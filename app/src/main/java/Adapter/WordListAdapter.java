@@ -46,9 +46,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         String mWord = mWordList.get(position).getWord();
         String mWordDef = mWordList.get(position).getDefinition();
         int mSubjectId = mWordList.get(position).getSubjectId();
-        String image = mWordList.get(position).getImage();
 
-        holder.word = new Word(mWordId, mSubjectId, mWord, mWordDef, image);
+        holder.word = new Word(mWordId, mSubjectId, mWord, mWordDef);
         // Add the data to the view
         holder.wordItem.setText(mWord);
         holder.wordItemDef.setText(mWordDef);

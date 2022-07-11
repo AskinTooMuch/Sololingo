@@ -27,12 +27,11 @@ public class EditSubjectActivity extends AppCompatActivity {
     private SharedPreferences sharedPref;
     private EditText edtSubjectName;
     private View vCheck;
-    private SubjectDAO subjectDAO;
+    private SubjectDAO subjectDAO= new SubjectDAO();
     private Intent receiveIntent;
     private Subject subject;
 
     private void bindingView() {
-        subjectDAO = new SubjectDAO();
         receiveIntent = getIntent();
         edtSubjectName = findViewById(R.id.edtSubjectName);
         vCheck = findViewById(R.id.vCheck);
@@ -50,13 +49,6 @@ public class EditSubjectActivity extends AppCompatActivity {
         String newName = edtSubjectName.getText().toString();
         subjectDAO.updateSubjectName(id, newName);
 
-        /*myRef = database.getReference("subject/" + id + "/name");
-        myRef.setValue(newName, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                Toast.makeText(EditSubjectActivity.this, getString(R.string.msg_updateSubject), Toast.LENGTH_SHORT).show();
-            }
-        });*/
         Intent intent = new Intent(EditSubjectActivity.this, ViewWordsActivity.class);
         subject.setName(newName);
         intent.putExtra("subject", subject);
@@ -70,6 +62,7 @@ public class EditSubjectActivity extends AppCompatActivity {
         bindingView();
         bindingAction();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);

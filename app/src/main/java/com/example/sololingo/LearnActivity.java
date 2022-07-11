@@ -31,7 +31,6 @@ public class LearnActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private ArrayList<Word> wordList = new ArrayList<>();
-    private int position;
     private Intent receiveIntent;
     private Subject subject;
     private View vLeft, vRight;
@@ -46,9 +45,6 @@ public class LearnActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         receiveIntent = getIntent();
         subject = (Subject) receiveIntent.getSerializableExtra("subject");
-
-        Log.d("duong", subject.getId() + "/" + subject.getCurProgress());
-
     }
 
     public void bindingAction() {
@@ -63,14 +59,11 @@ public class LearnActivity extends AppCompatActivity {
 
     private void moveRight(View view) {
         if (subject.getCurProgress() < wordList.size() - 1) {
-            Log.d("duong", "after right" + subject.getCurProgress());
-            Log.d("duong", "word" + position + wordList.get(subject.getCurProgress()).getWord());
-
-            tvProgress.setText((subject.getCurProgress() + 2) + "/" + wordList.size());
+            String progress = (subject.getCurProgress() + 2) + "/" + wordList.size();
+            tvProgress.setText(progress);
 
             tvWord.setText(wordList.get(subject.getCurProgress() + 1).getWord());
             tvWordDef.setText(wordList.get(subject.getCurProgress() + 1).getDefinition());
-
             subject.setCurProgress(subject.getCurProgress() + 1);
             myRef = database.getReference("subject/" + subject.getId());
             myRef.setValue(subject);
@@ -79,10 +72,8 @@ public class LearnActivity extends AppCompatActivity {
 
     private void moveLeft(View view) {
         if (subject.getCurProgress() != 0) {
-            Log.d("duong", "after left" + subject.getCurProgress());
-            Log.d("duong", "word" + position + wordList.get(subject.getCurProgress()).getWord());
-
-            tvProgress.setText((subject.getCurProgress()) + "/" + wordList.size());
+            String progress = (subject.getCurProgress()) + "/" + wordList.size();
+            tvProgress.setText(progress);
 
             tvWord.setText(wordList.get(subject.getCurProgress() - 1).getWord());
             tvWordDef.setText(wordList.get(subject.getCurProgress() - 1).getDefinition());
@@ -95,33 +86,14 @@ public class LearnActivity extends AppCompatActivity {
     public void getListWord() {
         myRef = database.getReference("word");
         int subjectId = subject.getId();
-        /*myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Word word = dataSnapshot.getValue(Word.class);
-                    Log.d("duong", word.getWord());
-                    if (word.getSubjectId() == 1) {
-                        wordList.add(word);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("duong","cancelled!");            }
-        });*/
-
         myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
-                    Log.d("duong", "word.getWord()");
                     DataSnapshot dataSnapshot = task.getResult();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Word word = (Word) snapshot.getValue(Word.class);
-                        Log.d("duong", word.getWord());
-                        if (word.getSubjectId() == 1) {
+                        if (word.getSubjectId() == subjectId) {
                             wordList.add(word);
                         }
                     }

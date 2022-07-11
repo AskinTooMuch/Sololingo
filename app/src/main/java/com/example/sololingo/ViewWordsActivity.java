@@ -40,9 +40,7 @@ public class ViewWordsActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private ArrayList<Word> wordList = new ArrayList<>();
-
     private ArrayList<Word> wordListFull = new ArrayList<>();
-
     private SubjectDAO subjectDAO = new SubjectDAO();
     private WordDAO wordDAO = new WordDAO();
     private WordListAdapter mWordListAdapter;
@@ -114,12 +112,8 @@ public class ViewWordsActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 subjectDAO.deleteSubject(subject.getId());
-                                /*myRef = database.getReference("subject/" + subject.getId());
-                                myRef.removeValue();*/
                                 for (Word word : wordList) {
                                     wordDAO.deleteWord(word.getId());
-                                    /*myRef = database.getReference("word/" + word.getId());
-                                    myRef.removeValue();*/
                                     Toast.makeText(ViewWordsActivity.this, getString(R.string.msg_deleteSubjectSuccess), Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
@@ -179,7 +173,6 @@ public class ViewWordsActivity extends AppCompatActivity {
     private void inflateWordsList() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewWordsActivity.this);
         rcvItems.setLayoutManager(linearLayoutManager);
-
         mWordListAdapter = new WordListAdapter(ViewWordsActivity.this, wordList);
         rcvItems.setAdapter(mWordListAdapter);
         wordList.clear();
@@ -191,7 +184,6 @@ public class ViewWordsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_words);
         bindingView();
         bindingAction();
-        //getWordsList();
         inflateWordsList();
     }
 

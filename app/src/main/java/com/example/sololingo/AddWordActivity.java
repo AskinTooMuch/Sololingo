@@ -46,13 +46,11 @@ public class AddWordActivity extends AppCompatActivity {
         int id = intent.getIntExtra("nextId", 0);
         String word = edtWord.getText().toString();
         String wordDef = edtWordDef.getText().toString();
-        return new Word(id, subject.getId(), word, wordDef, "123");
+        return new Word(id, subject.getId(), word, wordDef);
     }
 
     public void addWord(View view) {
         Word word = getWord();
-        /*myRef = database.getReference("word");
-        myRef.child(String.valueOf(word.getId())).setValue(word);*/
         wordDAO.addWord(word);
         finish();
     }

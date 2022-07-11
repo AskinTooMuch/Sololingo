@@ -35,30 +35,10 @@ public class SubjectDAO {
     }
 
     public void getSubjectList(SubjectDAO.FirebaseCallBack firebaseCallBack) {
-
-        //String uId = "vvduong108@gmail.com";
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String uId = firebaseUser.getEmail();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("subject");
-        /*myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Subject subject = (Subject) dataSnapshot.getValue(Subject.class);
-                    subjectListFull.add(subject);
-                    if (subject.getuId().equalsIgnoreCase(uId)) {
-                        subjectList.add(subject);
-                    }
-                }
-                firebaseCallBack.onCallBack(subjectList, subjectListFull);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });*/
-
         myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -68,13 +48,11 @@ public class SubjectDAO {
                     ArrayList<Subject> subjectListFull = new ArrayList<>();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Subject subject = (Subject) snapshot.getValue(Subject.class);
-                        Log.d("duong", subject.getName());
                         subjectListFull.add(subject);
                         if (subject.getuId().equalsIgnoreCase(uId)) {
                             subjectList.add(subject);
                         }
                     }
-                    Log.d("duong", subjectListFull.size() + "");
                     firebaseCallBack.onCallBack(subjectList, subjectListFull);
                 }
             }
