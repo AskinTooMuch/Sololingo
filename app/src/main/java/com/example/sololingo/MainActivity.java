@@ -36,6 +36,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import Adapter.TabAdapter;
@@ -148,6 +149,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             calendar.set(Calendar.HOUR_OF_DAY, pref.getInt("hour", 19));
             calendar.set(Calendar.MINUTE, pref.getInt("minute", 0));
             calendar.set(Calendar.SECOND, 0);
+            if(calendar.getTime().compareTo(new Date()) < 0) {
+                calendar.add(Calendar.DAY_OF_MONTH, 1);
+                Log.d("12345", "setNotification: passed date");
+            }
             Log.d("12345", "setNotification: "+pref.getInt("hour", 19)+":"+pref.getInt("minute", 0));
             NotificationService n = new NotificationService();
             String[] content = n.getNotificationContent();
