@@ -92,6 +92,7 @@
     <string name="msg_deleteSubjectSuccess">Delete Subject successfully</string>
     <string name="msg_deleteWordSuccess">Delete Word successfully</string>
     <string name="msg_listWordEmpty">Your words list is empty, try to insert some words and start learning!</string>
+    <string name="fillAll">You have to fill both Word and Word Definition</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -44,15 +45,22 @@ public class AddWordActivity extends AppCompatActivity {
         Intent intent = getIntent();
         subject = (Subject) intent.getSerializableExtra("subject");
         int id = intent.getIntExtra("nextId", 0);
-        String word = edtWord.getText().toString();
-        String wordDef = edtWordDef.getText().toString();
+        String word = edtWord.getText().toString().trim();
+        String wordDef = edtWordDef.getText().toString().trim();
         return new Word(id, subject.getId(), word, wordDef);
     }
 
     public void addWord(View view) {
-        Word word = getWord();
-        wordDAO.addWord(word);
-        finish();
+        String word = edtWord.getText().toString().trim();
+        String wordDef = edtWordDef.getText().toString().trim();
+        if (word.equalsIgnoreCase("") || wordDef.equalsIgnoreCase("")) {
+            Toast.makeText(this, getResources().getText(R.string.fillAll), Toast.LENGTH_SHORT).show();
+        } else {
+            Word mWord = getWord();
+            wordDAO.addWord(mWord);
+            finish();
+        }
+
     }
 
     @Override

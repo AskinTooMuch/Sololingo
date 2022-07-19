@@ -43,7 +43,8 @@ public class AddSubjectActivity extends AppCompatActivity {
         int id = intent.getIntExtra("nextId", 0);
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String uId = firebaseUser.getEmail();
-        String name = edtSubjectName.getText().toString();
+        String name = edtSubjectName.getText().toString().trim();
+        if (name.equalsIgnoreCase("")) name = "Unnamed subject";
         return new Subject(id, uId, name, 0);
     }
 

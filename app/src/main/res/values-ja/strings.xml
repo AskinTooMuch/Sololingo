@@ -84,4 +84,6 @@
     <string name="mark">マーク</string>
     <string name="submit">送信</string>
     <string name="Function_upcoming">今後の機能</string>
+
+    <string name="fillAll">言葉と定義の両方に入力する必要があります</string>
 </resources>
